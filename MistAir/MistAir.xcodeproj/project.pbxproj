@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAE5216DE762009DCADB /* AppDelegate.swift */; };
+		A328DAE8216DE762009DCADB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAE7216DE762009DCADB /* ViewController.swift */; };
+		A328DAEB216DE762009DCADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A328DAE9216DE762009DCADB /* Main.storyboard */; };
+		A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */; };
+		A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A328DAEF216DE765009DCADB /* Assets.xcassets */; };
+		A328DAF3216DE765009DCADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */; };
+		A328DAFE216DE765009DCADB /* MistAirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAFD216DE765009DCADB /* MistAirTests.swift */; };
+		A328DB09216DE765009DCADB /* MistAirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DB08216DE765009DCADB /* MistAirUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A328DAFA216DE765009DCADB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A328DADA216DE762009DCADB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A328DAE1216DE762009DCADB;
+			remoteInfo = MistAir;
+		};
+		A328DB05216DE765009DCADB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A328DADA216DE762009DCADB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A328DAE1216DE762009DCADB;
+			remoteInfo = MistAir;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A328DAE2216DE762009DCADB /* MistAir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MistAir.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A328DAE5216DE762009DCADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A328DAE7216DE762009DCADB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A328DAEA216DE762009DCADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A328DAED216DE762009DCADB /* MistAir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MistAir.xcdatamodel; sourceTree = "<group>"; };
+		A328DAEF216DE765009DCADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A328DAF2216DE765009DCADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A328DAF4216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A328DAF9216DE765009DCADB /* MistAirTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MistAirTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A328DAFD216DE765009DCADB /* MistAirTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistAirTests.swift; sourceTree = "<group>"; };
+		A328DAFF216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A328DB04216DE765009DCADB /* MistAirUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MistAirUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A328DB08216DE765009DCADB /* MistAirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistAirUITests.swift; sourceTree = "<group>"; };
+		A328DB0A216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A328DADF216DE762009DCADB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A328DAF6216DE765009DCADB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A328DB01216DE765009DCADB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A328DAD9216DE762009DCADB = {
+			isa = PBXGroup;
+			children = (
+				A328DAE4216DE762009DCADB /* MistAir */,
+				A328DAFC216DE765009DCADB /* MistAirTests */,
+				A328DB07216DE765009DCADB /* MistAirUITests */,
+				A328DAE3216DE762009DCADB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A328DAE3216DE762009DCADB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A328DAE2216DE762009DCADB /* MistAir.app */,
+				A328DAF9216DE765009DCADB /* MistAirTests.xctest */,
+				A328DB04216DE765009DCADB /* MistAirUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A328DAE4216DE762009DCADB /* MistAir */ = {
+			isa = PBXGroup;
+			children = (
+				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
+				A328DAE7216DE762009DCADB /* ViewController.swift */,
+				A328DAE9216DE762009DCADB /* Main.storyboard */,
+				A328DAEF216DE765009DCADB /* Assets.xcassets */,
+				A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */,
+				A328DAF4216DE765009DCADB /* Info.plist */,
+				A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */,
+			);
+			path = MistAir;
+			sourceTree = "<group>";
+		};
+		A328DAFC216DE765009DCADB /* MistAirTests */ = {
+			isa = PBXGroup;
+			children = (
+				A328DAFD216DE765009DCADB /* MistAirTests.swift */,
+				A328DAFF216DE765009DCADB /* Info.plist */,
+			);
+			path = MistAirTests;
+			sourceTree = "<group>";
+		};
+		A328DB07216DE765009DCADB /* MistAirUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A328DB08216DE765009DCADB /* MistAirUITests.swift */,
+				A328DB0A216DE765009DCADB /* Info.plist */,
+			);
+			path = MistAirUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A328DAE1216DE762009DCADB /* MistAir */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A328DB0D216DE765009DCADB /* Build configuration list for PBXNativeTarget "MistAir" */;
+			buildPhases = (
+				A328DADE216DE762009DCADB /* Sources */,
+				A328DADF216DE762009DCADB /* Frameworks */,
+				A328DAE0216DE762009DCADB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MistAir;
+			productName = MistAir;
+			productReference = A328DAE2216DE762009DCADB /* MistAir.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A328DAF8216DE765009DCADB /* MistAirTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A328DB10216DE765009DCADB /* Build configuration list for PBXNativeTarget "MistAirTests" */;
+			buildPhases = (
+				A328DAF5216DE765009DCADB /* Sources */,
+				A328DAF6216DE765009DCADB /* Frameworks */,
+				A328DAF7216DE765009DCADB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A328DAFB216DE765009DCADB /* PBXTargetDependency */,
+			);
+			name = MistAirTests;
+			productName = MistAirTests;
+			productReference = A328DAF9216DE765009DCADB /* MistAirTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A328DB03216DE765009DCADB /* MistAirUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A328DB13216DE765009DCADB /* Build configuration list for PBXNativeTarget "MistAirUITests" */;
+			buildPhases = (
+				A328DB00216DE765009DCADB /* Sources */,
+				A328DB01216DE765009DCADB /* Frameworks */,
+				A328DB02216DE765009DCADB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A328DB06216DE765009DCADB /* PBXTargetDependency */,
+			);
+			name = MistAirUITests;
+			productName = MistAirUITests;
+			productReference = A328DB04216DE765009DCADB /* MistAirUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A328DADA216DE762009DCADB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Salamender Li";
+				TargetAttributes = {
+					A328DAE1216DE762009DCADB = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					A328DAF8216DE765009DCADB = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A328DAE1216DE762009DCADB;
+					};
+					A328DB03216DE765009DCADB = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A328DAE1216DE762009DCADB;
+					};
+				};
+			};
+			buildConfigurationList = A328DADD216DE762009DCADB /* Build configuration list for PBXProject "MistAir" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A328DAD9216DE762009DCADB;
+			productRefGroup = A328DAE3216DE762009DCADB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A328DAE1216DE762009DCADB /* MistAir */,
+				A328DAF8216DE765009DCADB /* MistAirTests */,
+				A328DB03216DE765009DCADB /* MistAirUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A328DAE0216DE762009DCADB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A328DAF3216DE765009DCADB /* LaunchScreen.storyboard in Resources */,
+				A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */,
+				A328DAEB216DE762009DCADB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A328DAF7216DE765009DCADB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A328DB02216DE765009DCADB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A328DADE216DE762009DCADB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A328DAE8216DE762009DCADB /* ViewController.swift in Sources */,
+				A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */,
+				A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A328DAF5216DE765009DCADB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A328DAFE216DE765009DCADB /* MistAirTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A328DB00216DE765009DCADB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A328DB09216DE765009DCADB /* MistAirUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A328DAFB216DE765009DCADB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A328DAE1216DE762009DCADB /* MistAir */;
+			targetProxy = A328DAFA216DE765009DCADB /* PBXContainerItemProxy */;
+		};
+		A328DB06216DE765009DCADB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A328DAE1216DE762009DCADB /* MistAir */;
+			targetProxy = A328DB05216DE765009DCADB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A328DAE9216DE762009DCADB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A328DAEA216DE762009DCADB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A328DAF2216DE765009DCADB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A328DB0B216DE765009DCADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A328DB0C216DE765009DCADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A328DB0E216DE765009DCADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = MistAir/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Monash.MistAirr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A328DB0F216DE765009DCADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = MistAir/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Monash.MistAirr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A328DB11216DE765009DCADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = MistAirTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = monash.MistAirTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MistAir.app/MistAir";
+			};
+			name = Debug;
+		};
+		A328DB12216DE765009DCADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = MistAirTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = monash.MistAirTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MistAir.app/MistAir";
+			};
+			name = Release;
+		};
+		A328DB14216DE765009DCADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = MistAirUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = monash.MistAirUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MistAir;
+			};
+			name = Debug;
+		};
+		A328DB15216DE765009DCADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = MistAirUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = monash.MistAirUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MistAir;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A328DADD216DE762009DCADB /* Build configuration list for PBXProject "MistAir" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A328DB0B216DE765009DCADB /* Debug */,
+				A328DB0C216DE765009DCADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A328DB0D216DE765009DCADB /* Build configuration list for PBXNativeTarget "MistAir" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A328DB0E216DE765009DCADB /* Debug */,
+				A328DB0F216DE765009DCADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A328DB10216DE765009DCADB /* Build configuration list for PBXNativeTarget "MistAirTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A328DB11216DE765009DCADB /* Debug */,
+				A328DB12216DE765009DCADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A328DB13216DE765009DCADB /* Build configuration list for PBXNativeTarget "MistAirUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A328DB14216DE765009DCADB /* Debug */,
+				A328DB15216DE765009DCADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A328DAED216DE762009DCADB /* MistAir.xcdatamodel */,
+			);
+			currentVersion = A328DAED216DE762009DCADB /* MistAir.xcdatamodel */;
+			path = MistAir.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A328DADA216DE762009DCADB /* Project object */;
+}
