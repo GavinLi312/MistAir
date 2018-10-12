@@ -6,6 +6,9 @@
 //  Copyright © 2018 Gavin and Michelle. All rights reserved.
 //
 
+
+//how to create tab bar controller programatically: https://www.youtube.com/watch?v=1Sg7HjR_k2c
+
 import UIKit
 
 class BaseTabBarController: UITabBarController {
@@ -13,25 +16,14 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBarController?.tabBar.backgroundColor = UIColor.lightPurple
+        //tabBarController?.tabBar.backgroundColor = UIColor.lightPurple
 
-        // Do any additional setup after loading the view.
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //create the first controller: homepage
+    func createHomePageController(){
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

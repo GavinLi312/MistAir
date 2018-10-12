@@ -11,7 +11,6 @@
 		3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B159216DE89B00E00955 /* CustomColour.swift */; };
 		3203B15D216DE89B00E00955 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B15A216DE89B00E00955 /* Colour.swift */; };
 		A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAE5216DE762009DCADB /* AppDelegate.swift */; };
-		A328DAE8216DE762009DCADB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAE7216DE762009DCADB /* ViewController.swift */; };
 		A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */; };
 		A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A328DAEF216DE765009DCADB /* Assets.xcassets */; };
 		A328DAF3216DE765009DCADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */; };
@@ -42,7 +41,6 @@
 		3203B15A216DE89B00E00955 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		A328DAE2216DE762009DCADB /* MistAir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MistAir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A328DAE5216DE762009DCADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A328DAE7216DE762009DCADB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A328DAED216DE762009DCADB /* MistAir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MistAir.xcdatamodel; sourceTree = "<group>"; };
 		A328DAEF216DE765009DCADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A328DAF2216DE765009DCADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
-				A328DAE7216DE762009DCADB /* ViewController.swift */,
 				A328DAEF216DE765009DCADB /* Assets.xcassets */,
 				3203B158216DE89B00E00955 /* BaseTabBarController.swift */,
 				3203B15A216DE89B00E00955 /* Colour.swift */,
@@ -265,7 +262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3203B15B216DE89B00E00955 /* BaseTabBarController.swift in Sources */,
-				A328DAE8216DE762009DCADB /* ViewController.swift in Sources */,
 				A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */,
 				3203B15D216DE89B00E00955 /* Colour.swift in Sources */,
 				3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */,
