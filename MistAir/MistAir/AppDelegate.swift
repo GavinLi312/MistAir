@@ -22,7 +22,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        //set tab bar as the root view
         window?.rootViewController = BaseTabBarController()
+        
+        //MARK: change navigation bar setting
+        //change bar tint color
+        UINavigationBar.appearance().barTintColor = UIColor.lightPurple
+        
+        //change nav item color
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        //change to not translucent to get correct colour
+        UINavigationBar.appearance().isTranslucent = false
+        
+        //change title text attributes
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        //MARK: change status bar setting
+        //change the text colour of the status bar to white
+        application.statusBarStyle = .lightContent
         
         return true
     }
