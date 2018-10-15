@@ -37,17 +37,20 @@ class BaseTabBarController: UITabBarController {
         tabBar.isTranslucent = false
     }
     
-    //create the first controller: homepage
+    ///create the first controller: homepage
     func createHomePageController() -> UINavigationController{
         
         //create a homePageController [it is an empty UIView for now]
-        let homePageController = UIViewController()
+        let homePageController = HomePageController()
         
         //assign the homePageController as the root controller
         let homePageNavigationController = UINavigationController(rootViewController: homePageController)
         
         //tab bar item title
         homePageNavigationController.title = "Home"
+        
+        //set up navgigationItem title
+        homePageController.navigationItem.title = "Home"
         
         //tab bar item image when it is not selected
         homePageNavigationController.tabBarItem.image = UIImage(named: "homepage_empty-20")
@@ -70,6 +73,9 @@ class BaseTabBarController: UITabBarController {
         //tab bar item title
         timerNavigationController.title = "Timer"
         
+        //set up NavigationItem Title
+        timerController.navigationItem.title = "Timer"
+        
         //tab bar item image when it is not selected
         timerNavigationController.tabBarItem.image = UIImage(named: "timer-20")
         
@@ -87,6 +93,9 @@ class BaseTabBarController: UITabBarController {
         
         //tab bar item title
         statisticsNavigationController.title = "Statistics"
+        
+        //set up NavigationItem Title
+        statisticsController.navigationItem.title = "Statistics"
         
         //tab bar item image when it is not selected
         statisticsNavigationController.tabBarItem.image = UIImage(named: "graph_empty-20")
@@ -109,6 +118,9 @@ class BaseTabBarController: UITabBarController {
         
         //tab bar item title
         moreNavigationController.title = "More"
+        
+        //set up NavigationItem Title
+        moreController.navigationItem.title = "More"
         
         //tab bar item image when it is not selected
         moreNavigationController.tabBarItem.image = UIImage(named: "more-20")

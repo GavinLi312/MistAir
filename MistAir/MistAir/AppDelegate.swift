@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //change title text attributes
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
+        
         //MARK: change status bar setting
         //change the text colour of the status bar to white
         application.statusBarStyle = .lightContent

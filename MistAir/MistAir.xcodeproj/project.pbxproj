@@ -19,6 +19,7 @@
 		A328DAFE216DE765009DCADB /* MistAirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAFD216DE765009DCADB /* MistAirTests.swift */; };
 		A328DB09216DE765009DCADB /* MistAirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DB08216DE765009DCADB /* MistAirUITests.swift */; };
 		A35C3F3F2171A14F001F1676 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */; };
+		A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A32B2174250C0094CDA3 /* HomePageController.swift */; };
 		B5D6D80C27F598D5B328087B /* Pods_MistAirUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AA0692FEC7862E5E22CF06 /* Pods_MistAirUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		A328DB08216DE765009DCADB /* MistAirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistAirUITests.swift; sourceTree = "<group>"; };
 		A328DB0A216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A3C2A32B2174250C0094CDA3 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		A5975A9678686FE68192A144 /* Pods-MistAirTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirTests/Pods-MistAirTests.release.xcconfig"; sourceTree = "<group>"; };
 		D03A138CAF868323DA196659 /* Pods-MistAirUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirUITests/Pods-MistAirUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D18EF94D8B7EE29D4DD57835 /* Pods_MistAir.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MistAir.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
 				A328DAEF216DE765009DCADB /* Assets.xcassets */,
 				3203B158216DE89B00E00955 /* BaseTabBarController.swift */,
+				A3C2A32B2174250C0094CDA3 /* HomePageController.swift */,
 				3203B15A216DE89B00E00955 /* Colour.swift */,
 				3203B159216DE89B00E00955 /* CustomColour.swift */,
 				A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */,
@@ -366,12 +369,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MistAir/Pods-MistAir-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChartsRealm/ChartsRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChartsRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +406,7 @@
 				3203B15D216DE89B00E00955 /* Colour.swift in Sources */,
 				3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */,
 				A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */,
+				A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
