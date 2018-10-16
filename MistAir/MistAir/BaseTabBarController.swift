@@ -84,7 +84,7 @@ class BaseTabBarController: UITabBarController {
     func createTimerController() -> UINavigationController{
         
         //create a timerController [it is an empty UIView for now]
-        let timerController = UIViewController()
+        let timerController = TimerController()
         
         //assign the timerController as the root controller
         let timerNavigationController = UINavigationController(rootViewController: timerController)

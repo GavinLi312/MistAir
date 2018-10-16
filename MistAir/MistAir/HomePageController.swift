@@ -10,8 +10,10 @@ import UIKit
 
 class HomePageController: UIViewController {
 
-    var homePageView: UIView!
+
     let shapeLayer = CAShapeLayer()
+    var pulsatingLayer: CAShapeLayer!
+    
     let humidityStandards = [0.25,0.5,0.75]
     let currentStatus = ["dry", "slightly dry","normal", "humid"]
     //set up
@@ -101,7 +103,11 @@ class HomePageController: UIViewController {
         readHumidity(humidity: 0.75)
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if self.pulsatingLayer != nil{
+            animatePulsatingLayer()
+        }
+    }
     
     ///backGroundPageview
     func initializeBackGroundView(){
@@ -114,15 +120,34 @@ class HomePageController: UIViewController {
     ///Progress Circle
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
     func initializeCircleView() {
+        
         let trackLayer = CAShapeLayer()
         let center = view.center
         let circlarPath = UIBezierPath(arcCenter: .zero, radius: self.view.frame.width/3, startAngle: 0, endAngle: 2.0*CGFloat.pi, clockwise: true)
+        pulsatingLayer = CAShapeLayer()
+        pulsatingLayer.path = circlarPath.cgPath
+        
+//        pulsatingLayer.strokeColor = UIColor.white.cgColor
+        pulsatingLayer.lineWidth = 35
+        
+        pulsatingLayer.fillColor = UIColor.transpraintPurple.cgColor
+        
+        pulsatingLayer.lineCap = kCALineCapRound
+        if Device.IS_IPAD{
+            pulsatingLayer.position = CGPoint(x: view.center.x, y: view.center.y - self.view.frame.width/5)
+        }else{
+            pulsatingLayer.position = CGPoint(x: view.center.x, y: view.center.y - self.view.frame.width/3)
+        }
+        view.layer.addSublayer(pulsatingLayer)
+        
+        
+        
         trackLayer.path = circlarPath.cgPath
         
         trackLayer.strokeColor = UIColor.white.cgColor
         trackLayer.lineWidth = 35
         
-        trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.fillColor = UIColor.darkPurple.cgColor
         
         trackLayer.lineCap = kCALineCapRound
         if Device.IS_IPAD{
@@ -165,6 +190,15 @@ class HomePageController: UIViewController {
         view.layer.addSublayer(shapeLayer)
     }
     
+    private func animatePulsatingLayer(){
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.toValue = 1.3
+        animation.duration = 0.8
+        animation.autoreverses = true
+        animation.repeatCount = Float.infinity
+        pulsatingLayer.add(animation, forKey: "pulsating")
+        
+    }
     ///initialize the humidityLabel
     
     fileprivate func initializeHumidityLabel() {

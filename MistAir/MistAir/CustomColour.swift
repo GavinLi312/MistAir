@@ -12,6 +12,10 @@ extension UIColor{
     ///main theme colour for background
     static let darkPurple = UIColor(red: 71, green: 47, blue: 95)
     
+
+    ///main theme colour for background
+    static let transpraintPurple = UIColor(red: CGFloat(Double(124)/Double(255)), green: CGFloat(Double(51)/Double(255)), blue: CGFloat(Double(230)/Double(255)), alpha: 0.3)
+    
     ///status bar, navigation bar, tab bar background colour
     static let lightPurple = UIColor(red: 110, green: 75, blue: 145)
 

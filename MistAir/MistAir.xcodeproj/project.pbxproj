@@ -12,6 +12,7 @@
 		3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B159216DE89B00E00955 /* CustomColour.swift */; };
 		3203B15D216DE89B00E00955 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B15A216DE89B00E00955 /* Colour.swift */; };
 		624A36C6AFB4D1702CEAB14A /* Pods_MistAirTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA92B556EE55A33CA1761F49 /* Pods_MistAirTests.framework */; };
+		A300C91721761CAE0084D7BE /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300C91621761CAE0084D7BE /* TimerController.swift */; };
 		A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAE5216DE762009DCADB /* AppDelegate.swift */; };
 		A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */; };
 		A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A328DAEF216DE765009DCADB /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		39E0A8462956D1FFE36CE87C /* Pods-MistAir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAir.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAir/Pods-MistAir.debug.xcconfig"; sourceTree = "<group>"; };
 		77E11AC791C34630E739FFE3 /* Pods-MistAirUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirUITests/Pods-MistAirUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C5FFE71A6FF894A930E59A9 /* Pods-MistAirTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirTests/Pods-MistAirTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A300C91621761CAE0084D7BE /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 		A328DAE2216DE762009DCADB /* MistAir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MistAir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A328DAE5216DE762009DCADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A328DAED216DE762009DCADB /* MistAir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MistAir.xcdatamodel; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
 				A328DAEF216DE765009DCADB /* Assets.xcassets */,
 				3203B158216DE89B00E00955 /* BaseTabBarController.swift */,
+				A300C91621761CAE0084D7BE /* TimerController.swift */,
 				A3C2A32B2174250C0094CDA3 /* HomePageController.swift */,
 				3203B15A216DE89B00E00955 /* Colour.swift */,
 				3203B159216DE89B00E00955 /* CustomColour.swift */,
@@ -405,6 +408,7 @@
 				A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */,
 				3203B15D216DE89B00E00955 /* Colour.swift in Sources */,
 				3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */,
+				A300C91721761CAE0084D7BE /* TimerController.swift in Sources */,
 				A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */,
 				A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */,
 			);
