@@ -14,8 +14,8 @@ protocol ReadTimeDelegate {
 class TimerController: UIViewController,ReadTimeDelegate {
 
 
-    let shapeLayer = CAShapeLayer()
-    var pulsatingLayer: CAShapeLayer!
+//    let shapeLayer = CAShapeLayer()
+//    var pulsatingLayer: CAShapeLayer!
     var currentCircleSlider: CircleSlider!
     
     let startLabel : UILabel = {
@@ -89,11 +89,11 @@ class TimerController: UIViewController,ReadTimeDelegate {
 //        addImageToTheCircle()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if self.pulsatingLayer != nil{
-//            animatePulsatingLayer()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.pulsatingLayer != nil{
+////            animatePulsatingLayer()
+//        }
+//    }
     
     ///backGroundPageview
     func initializeBackGroundView(){
