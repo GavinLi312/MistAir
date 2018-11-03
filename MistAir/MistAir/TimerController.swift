@@ -11,6 +11,14 @@ protocol ReadTimeDelegate {
     func changeLabel(startMinute:Int,Duration:Int)
 }
 
+
+struct timerFirebase {
+    var startTime:NSDate = NSDate()
+    var Duration : TimeInterval = 0.0
+    var timerStatus = false
+    
+}
+
 class TimerController: UIViewController,ReadTimeDelegate {
 
 

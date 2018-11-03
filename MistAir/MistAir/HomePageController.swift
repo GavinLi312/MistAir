@@ -7,21 +7,42 @@
 //
 
 import UIKit
+import UserNotifications
 
-class HomePageController: UIViewController {
+protocol HomePageFirebase {
+    func humidityChanged()
+    func waterSourceChange(waterStatus:Bool)
+}
 
 
+
+class HomePageController: UIViewController,HomePageFirebase {
+
+    enum HumidifierSwitchStatus : Int{
+        case on
+        case off
+        case noWater
+    }
+    
+    var customedTabBarController : BaseTabBarController?
+    
     let shapeLayer = CAShapeLayer()
+    
     var pulsatingLayer: CAShapeLayer!
     
     let humidityStandards = [0.25,0.5,0.75]
+    
     let currentStatus = ["dry", "slightly dry","normal", "humid"]
+    
+    let activityIndicator = UIActivityIndicatorView()
+    
+    var timer: Timer = Timer()
     //set up
     let humidityLabel : UILabel = {
         let label = UILabel()
-        label.text = "Humidity"
+        label.text = "0%"
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 72)
+        label.font = UIFont.boldSystemFont(ofSize: 70)
         label.textColor = UIColor.white
 //        label.layer.borderColor = UIColor.black.cgColor
 //        label.layer.borderWidth = 2
@@ -73,13 +94,17 @@ class HomePageController: UIViewController {
         return label
     }()
     
+    let image = UIImage(named: "power-button-2-20")
+    
     let switchButton : UIButton = {
         let button = UIButton()
         button.setTitle(" TURN ON",for:.normal)
         button.setTitleColor(UIColor.white,for:.normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.setImage(UIImage(named: "homepage_empty-20"), for: .normal)
+//        let image = UIImage(named: "power-button-2-20")?.cgImage
+//
+//        button.setImage(image, for: .normal)
         button.backgroundColor = UIColor.buttonPurple
         button.layer.cornerRadius = 5
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -89,8 +114,34 @@ class HomePageController: UIViewController {
         
     }()
     
+    var buttonStatus:HumidifierSwitchStatus = HumidifierSwitchStatus.off{
+        didSet{
+            switch buttonStatus {
+            case .on:
+                self.humidifierStatusLabel.text = "On"
+                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .down)
+                self.switchButton.setImage(buttonImage, for: .normal)
+                self.switchButton.setTitle(" TURN OFF", for: .normal)
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startTimer), userInfo: nil, repeats: true)
+            case .off:
+                self.humidifierStatusLabel.text = "Off"
+                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .up)
+                self.switchButton.setImage(buttonImage, for: .normal)
+                self.switchButton.setTitle(" TURN ON", for: .normal)
+                self.runningTimeLabel.text = "00:00:00"
+                if self.timer.isValid == true{
+                    self.timer.invalidate()
+                }
+            case .noWater:
+                self.humidifierStatusLabel.text = "No Water"
+                print("i have no water")
+        }
+    }
+    }
     
     override func viewDidLoad() {
+        customedTabBarController = self.tabBarController as? BaseTabBarController
+        customedTabBarController?.humidiferFirebase.homePageProtocol = self
         super.viewDidLoad()
         initializeBackGroundView()
         initializeCircleView()
@@ -100,9 +151,32 @@ class HomePageController: UIViewController {
         initlalizeHumidifierStatusLabel(status: "lalala")
         initlalizeRunningTimeLabel(status:"time")
         initializeSwitchButton(title: "Button")
-        readHumidity(humidity: 0.75)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        group.notify(queue: .main){
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self.readHumidity(humidity: self.changePercentageToDouble(percentage: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.currentHumidity)!))
+            if (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.waterSufficient)! == false{
+                self.buttonStatus = .noWater
+            }else{
+                if (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.status)! == true{
+                    self.buttonStatus = .on
+
+
+                }else{
+                    self.buttonStatus = .off
+                }
+            }
+        }
         
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         if self.pulsatingLayer != nil{
             animatePulsatingLayer()
@@ -126,8 +200,7 @@ class HomePageController: UIViewController {
         let circlarPath = UIBezierPath(arcCenter: .zero, radius: self.view.frame.width/3, startAngle: 0, endAngle: 2.0*CGFloat.pi, clockwise: true)
         pulsatingLayer = CAShapeLayer()
         pulsatingLayer.path = circlarPath.cgPath
-        
-//        pulsatingLayer.strokeColor = UIColor.white.cgColor
+
         pulsatingLayer.lineWidth = 35
         
         pulsatingLayer.fillColor = UIColor.transpraintPurple.cgColor
@@ -215,15 +288,6 @@ class HomePageController: UIViewController {
     }
     
     func initializecurrentHumidityStatusLabel(humidity:Double){
-        if humidity <= self.humidityStandards[0]{
-            currentHumidityStatusLabel.text = self.currentStatus[0]
-        }else if humidity <= self.humidityStandards[1]{
-            currentHumidityStatusLabel.text = self.currentStatus[1]
-        }else if humidity <= self.humidityStandards[2]{
-            currentHumidityStatusLabel.text = self.currentStatus[2]
-        }else{
-            currentHumidityStatusLabel.text = self.currentStatus[3]
-        }
 
         currentHumidityStatusLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30)
         currentHumidityStatusLabel.center = CGPoint(x: self.view.center.x, y: self.humidityLabel.frame.maxY)
@@ -254,6 +318,17 @@ class HomePageController: UIViewController {
     
     ///put humidity on the circle
     func readHumidity(humidity:Double){
+        
+        if humidity <= self.humidityStandards[0]{
+            currentHumidityStatusLabel.text = self.currentStatus[0]
+        }else if humidity <= self.humidityStandards[1]{
+            currentHumidityStatusLabel.text = self.currentStatus[1]
+        }else if humidity <= self.humidityStandards[2]{
+            currentHumidityStatusLabel.text = self.currentStatus[2]
+        }else{
+            currentHumidityStatusLabel.text = self.currentStatus[3]
+        }
+        
         let basicAnimation =  CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = humidity
         self.humidityLabel.text = "\(Int(humidity*100))%"
@@ -265,6 +340,67 @@ class HomePageController: UIViewController {
     }
 
     @objc func switchButtonWasPressed(_ sender: UIButton) {
+        if self.buttonStatus == .noWater{
+            noWaterWarning()
+        }else{
+            if self.buttonStatus == .on{
+                self.buttonStatus = .off
+                self.customedTabBarController?.humidiferFirebase.setStatus(status: false)
+            }else if buttonStatus == .off{
+                self.buttonStatus = .on
+                self.customedTabBarController?.humidiferFirebase.setStatus(status: true)
+                self.customedTabBarController?.humidiferFirebase.setTurnOnTime(time:NSDate())
+            }
+        }
         print("yeah i am touched")
+        
     }
+    
+    func changePercentageToDouble(percentage:String) -> Double {
+        var newpercentage = percentage
+        
+        newpercentage.remove(at: percentage.firstIndex(of: "%")!)
+        var newDouble = Double(newpercentage)
+        return newDouble!/100.00
+    }
+    
+    
+    func humidityChanged() {
+        self.readHumidity(humidity: self.changePercentageToDouble(percentage: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.currentHumidity)!))
+    }
+    
+    func waterSourceChange(waterStatus:Bool) {
+        if waterStatus == false{
+            self.buttonStatus = .off
+            self.buttonStatus = .noWater
+            noWaterWarning()
+        }else{
+            self.buttonStatus = .off
+            self.humidifierStatusLabel.text = "Read To Go"
+        }
+    }
+    
+    func noWaterWarning(){
+        let alertController = AlertMessage.displayErrorMessage(title: "Water Source", message: "The Water Source of the humidifier is not sufficient, Please Check.")
+        self.present(alertController, animated: true, completion: nil)
+        AlertMessage.pushNotification(title: "Water Source", body: "The Water Source of the humidifier is not sufficient, Please Check.")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            alertController.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc func startTimer(){
+        let difference = abs((self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.turnOnTime)!.timeIntervalSinceNow)
+        self.runningTimeLabel.text = stringFromTimeInterval(interval: difference)
+    }
+    
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
+
 }

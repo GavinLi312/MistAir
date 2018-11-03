@@ -23,6 +23,8 @@
 		A328DB09216DE765009DCADB /* MistAirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DB08216DE765009DCADB /* MistAirUITests.swift */; };
 		A35C3F3F2171A14F001F1676 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */; };
 		A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A32B2174250C0094CDA3 /* HomePageController.swift */; };
+		A3ECEC43218C336B0031EC7A /* HumidifierFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */; };
+		A3ECEC45218C642D0031EC7A /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECEC44218C642D0031EC7A /* AlertMessage.swift */; };
 		B5D6D80C27F598D5B328087B /* Pods_MistAirUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AA0692FEC7862E5E22CF06 /* Pods_MistAirUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		A328DB0A216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A3C2A32B2174250C0094CDA3 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
+		A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidifierFireBase.swift; sourceTree = "<group>"; };
+		A3ECEC44218C642D0031EC7A /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		A5975A9678686FE68192A144 /* Pods-MistAirTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirTests/Pods-MistAirTests.release.xcconfig"; sourceTree = "<group>"; };
 		D03A138CAF868323DA196659 /* Pods-MistAirUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirUITests/Pods-MistAirUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D18EF94D8B7EE29D4DD57835 /* Pods_MistAir.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MistAir.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
 				A328DAEF216DE765009DCADB /* Assets.xcassets */,
 				3203B158216DE89B00E00955 /* BaseTabBarController.swift */,
+				A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */,
 				A300C91621761CAE0084D7BE /* TimerController.swift */,
 				A300C918217712010084D7BE /* CircleSlider.swift */,
 				A3C2A32B2174250C0094CDA3 /* HomePageController.swift */,
@@ -164,6 +169,7 @@
 				A328DAF4216DE765009DCADB /* Info.plist */,
 				A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */,
 				A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */,
+				A3ECEC44218C642D0031EC7A /* AlertMessage.swift */,
 			);
 			path = MistAir;
 			sourceTree = "<group>";
@@ -258,6 +264,11 @@
 				TargetAttributes = {
 					A328DAE1216DE762009DCADB = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					A328DAF8216DE765009DCADB = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -414,10 +425,12 @@
 				A300C91B21785D180084D7BE /* TimeFormatter.swift in Sources */,
 				A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */,
 				A300C919217712010084D7BE /* CircleSlider.swift in Sources */,
+				A3ECEC45218C642D0031EC7A /* AlertMessage.swift in Sources */,
 				3203B15D216DE89B00E00955 /* Colour.swift in Sources */,
 				3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */,
 				A300C91721761CAE0084D7BE /* TimerController.swift in Sources */,
 				A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */,
+				A3ECEC43218C336B0031EC7A /* HumidifierFireBase.swift in Sources */,
 				A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

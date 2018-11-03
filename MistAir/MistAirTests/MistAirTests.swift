@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import MistAir
 
 class MistAirTests: XCTestCase {
@@ -31,6 +32,11 @@ class MistAirTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    func testFIrebase(){
+        let firebase = HumidifierFirebase()
+//        firebase.getData()
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

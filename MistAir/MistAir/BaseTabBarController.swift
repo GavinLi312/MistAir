@@ -10,6 +10,8 @@
 //how to create tab bar controller programatically: https://www.youtube.com/watch?v=1Sg7HjR_k2c
 
 import UIKit
+import FirebaseDatabase
+
 
 //https://gist.github.com/mahmudahsan/bcc1272433e38f1efd3c2389c75cd00f github detect current Iphone device
 struct Device {
@@ -30,14 +32,22 @@ struct Device {
     static let IS_IPHONE_X         = IS_IPHONE && SCREEN_MAX_LENGTH == 812
 }
 
+
+
 class BaseTabBarController: UITabBarController {
 
+    var humidiferFirebase = HumidifierFirebase()
+    
+    var activityIndicator = UIActivityIndicatorView()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //set up tab bar
         setupTabBar()
         
+
         //add controllers to tab bar controllers
         viewControllers = [createHomePageController(),createTimerController(),createStatisticsController(),createMoreController()]
     }
@@ -146,5 +156,9 @@ class BaseTabBarController: UITabBarController {
         
         return moreNavigationController
     }
-
+    
+    @objc func readDataFromFirebase()  {
+        self.humidiferFirebase = HumidifierFirebase()
+    }
+    
 }
