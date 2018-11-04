@@ -8,10 +8,12 @@
 
 import UIKit
 
+
+let sectionArray = ["HUMIDITY LEVEL", "PRESENCE DETECTION", "SETTING"]
+
 class MoreController: UITableViewController {
 
-    //for header
-    let sectionArray = ["HUMIDITY LEVEL", "PRESENCE DETECTION", "SETTING"]
+    
     
     //for mode array -- first row for each section
     let modeArray = [Mode(imageName: "HL mode-40", labelText: "HL Auto Mode"),
@@ -89,11 +91,22 @@ class MoreController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //set up cell for first row of each section
+        //switch
         if indexPath.row == 0{
             let modeCell = tableView.dequeueReusableCell(withIdentifier: "ModeCell", for: indexPath) as! MoreTableViewCell
             modeCell.selectionStyle = .none
             modeCell.labelView.text = modeArray[indexPath.section].labelText
             modeCell.iconView.image = UIImage(named: modeArray[indexPath.section].imageName!)
+            switch indexPath.section{
+            case 0:
+                modeCell.forUse = sectionArray[0]
+            case 1:
+                modeCell.forUse = sectionArray[1]
+            case 2:
+                modeCell.forUse = sectionArray[2]
+            default:
+                print("should be all right")
+            }
             return modeCell
         }
         
@@ -121,6 +134,7 @@ class MoreController: UITableViewController {
         return explanationCell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pair = (indexPath.section,indexPath.row)
         switch pair {
@@ -135,6 +149,7 @@ class MoreController: UITableViewController {
         }
         tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor.darkPurple
     }
+    
     
 
 }
