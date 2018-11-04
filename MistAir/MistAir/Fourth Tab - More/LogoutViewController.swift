@@ -16,9 +16,9 @@ class LogoutViewController: UIViewController{
     //the logout label
     let logoutLabel: UILabel = {
         let logout = UILabel()
-        logout.text = "LOG OUT"
+        logout.text = "WANNA LOG OUT?"
         logout.textColor = UIColor.authTextYellow
-        logout.font = UIFont.boldSystemFont(ofSize: 28)
+        logout.font = UIFont.boldSystemFont(ofSize: 24)
         logout.adjustsFontSizeToFitWidth = true
         logout.minimumScaleFactor = 0.5
         logout.lineBreakMode = .byWordWrapping
@@ -56,6 +56,7 @@ class LogoutViewController: UIViewController{
         textfield.font = UIFont.systemFont(ofSize: 17)
         textfield.textColor = UIColor.customGrey
         textfield.contentVerticalAlignment = .center
+        textfield.adjustsFontSizeToFitWidth = true
         return textfield
     }()
     
@@ -81,6 +82,7 @@ class LogoutViewController: UIViewController{
         textfield.font = UIFont.systemFont(ofSize: 17)
         textfield.textColor = UIColor.customGrey
         textfield.contentVerticalAlignment = .center
+        textfield.adjustsFontSizeToFitWidth = true
         return textfield
     }()
 
@@ -103,6 +105,9 @@ class LogoutViewController: UIViewController{
 
         //set background colour
         view.backgroundColor = UIColor.darkPurple
+        
+        //navigation item title
+        self.navigationItem.title = "Log out"
         
         //setup UI
         setupLoginBox()
@@ -131,9 +136,10 @@ class LogoutViewController: UIViewController{
         loginView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         loginView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         var width = 300
-        let height = 410
+        var height = 410
         if Device.IS_IPHONE_5{
             width = 260
+            height = 350
         }
         loginView.widthAnchor.constraint(equalToConstant: CGFloat(width)).isActive = true
         loginView.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
