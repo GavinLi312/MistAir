@@ -104,8 +104,8 @@ class TimerController: UIViewController,ReadTimeDelegate {
 //        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
         self.startAndEndTime = self.getStartTimeAndEndTime(startTime: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)!, duration: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)!)
         
-        print(self.currentCircleSlider.getAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: NSDate(), date2:self.startAndEndTime[0])))
-        print(self.currentCircleSlider.getAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: self.startAndEndTime[0], date2: self.startAndEndTime[1])))
+        print(self.currentCircleSlider.getStartAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: NSDate(), date2:self.startAndEndTime[0])))
+        print(self.currentCircleSlider.getEndAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: self.startAndEndTime[0], date2: self.startAndEndTime[1])))
         
     }
     
@@ -127,8 +127,8 @@ class TimerController: UIViewController,ReadTimeDelegate {
         let circleSlider = CircleSlider(frame: CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.width))
         
         circleSlider.makeSlider()
-        circleSlider.start_point = CGPoint(x: circleSlider.circle_center.x, y: circleSlider.circle_center.y - circleSlider.circle_diameter/2)
-        circleSlider.end_point = CGPoint(x: circleSlider.circle_center.x + circleSlider.circle_diameter/2, y: circleSlider.circle_center.y )
+//        circleSlider.start_point = CGPoint(x: circleSlider.circle_center.x, y: circleSlider.circle_center.y - circleSlider.circle_diameter/2)
+//        circleSlider.end_point = CGPoint(x: circleSlider.circle_center.x + circleSlider.circle_diameter/2, y: circleSlider.circle_center.y )
         circleSlider.updateTouchTrail()
         circleSlider.changeLabelProtocol = self
         currentCircleSlider = circleSlider

@@ -160,7 +160,7 @@
 				A3ECEC4A218E9C400031EC7A /* Date Extension */,
 				A3ECEC49218E9C190031EC7A /* Colour Extension */,
 				A3ECEC48218E9BCD0031EC7A /* Second Tab - Timer */,
-				A3ECEC47218E9BBE0031EC7A /* Firt Tab - Home */,
+				A3ECEC47218E9BBE0031EC7A /* First Tab - Home */,
 				A3ECEC46218E9B7B0031EC7A /* Base Tab Bar */,
 			);
 			path = MistAir;
@@ -192,12 +192,12 @@
 			path = "Base Tab Bar";
 			sourceTree = "<group>";
 		};
-		A3ECEC47218E9BBE0031EC7A /* Firt Tab - Home */ = {
+		A3ECEC47218E9BBE0031EC7A /* First Tab - Home */ = {
 			isa = PBXGroup;
 			children = (
 				A3C2A32B2174250C0094CDA3 /* HomePageController.swift */,
 			);
-			path = "Firt Tab - Home";
+			path = "First Tab - Home";
 			sourceTree = "<group>";
 		};
 		A3ECEC48218E9BCD0031EC7A /* Second Tab - Timer */ = {

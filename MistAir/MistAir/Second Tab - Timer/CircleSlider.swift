@@ -222,18 +222,19 @@ class CircleSlider: UIView {
         self.setNeedsDisplay()
     }
     
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!.location(in: self)
         
         if checkPointInTheCircle(Point: touch, Center: self.start_point!, Radius: self.circle_width/2){
             moveTouch(toPoint: touch, whichpoint: "start")
-            print("yes i am moving")
+           // print("yes i am moving")
         } else  if checkPointInTheCircle(Point: touch, Center: self.end_point!, Radius: self.circle_width/2){
             moveTouch(toPoint: touch, whichpoint: "end")
             
         }else{
             touchFailed()
-            print("faile")
+           // print("faile")
         }
         
     }
@@ -242,6 +243,7 @@ class CircleSlider: UIView {
 
         updateTouchTrail()
     }
+    
     private func moveTouch(toPoint point: CGPoint,whichpoint option:String) {
         let circlePoint = getPointOnCircle(forPoint: point)
 
@@ -303,10 +305,23 @@ class CircleSlider: UIView {
         return Int(minutes)
     }
     
-    func getAngleFromMinute(minute:Int) -> CGFloat{
+    func getStartAngleFromMinute(minute:Int) -> CGFloat{
         var angle : CGFloat!
         var percentage = CGFloat(minute)/CGFloat(self.time)
         angle = percentage * 2 * CGFloat.pi
+        self.start_rad = angle
         return angle
     }
+    
+    func getEndAngleFromMinute(minute:Int) -> CGFloat {
+        var angle : CGFloat!
+        var percentage = CGFloat(minute)/CGFloat(self.time)
+        angle = percentage * 2 * CGFloat.pi
+        self.end_rad = angle
+        return angle
+    }
+    
+    
+    
+    
 }
