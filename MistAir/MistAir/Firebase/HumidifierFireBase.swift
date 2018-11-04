@@ -32,7 +32,7 @@ class HumidifierFirebase {
     
     var oldHumidifierStarus : humidifierStatus?
     
-    var humidifierKey = "-LQHaJMvoyvWyBicOSjr"
+    var humidifierKey  = "-LQHaJMvoyvWyBicOSjr"
     
     var databaseRef:DatabaseReference?
     
@@ -45,6 +45,8 @@ class HumidifierFirebase {
     init() {
         databaseRef = Database.database().reference()
         humidifierRef = databaseRef?.child("humidifier")
+        print(UserDefaults.standard.string(forKey: "Humidifier ID")!)
+        print(humidifierKey)
         getData()
     }
     
