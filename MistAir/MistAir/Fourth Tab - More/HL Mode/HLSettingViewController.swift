@@ -11,6 +11,8 @@ import Firebase
 
 class HLSettingViewController: UIViewController {
 
+    var customTabBarController : BaseTabBarController?
+    
     //draw UI programatically
     
     //for maximum level setting
@@ -112,11 +114,14 @@ class HLSettingViewController: UIViewController {
         
         //navigation item title
         self.navigationItem.title = "Humidity Level Setting"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"tick-20"), style: .done, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"tick-20"), style: .done, target: self, action: #selector(self.setCustomeHumidityLevel(_:)))
         
         setupMaxHLview()
         setupMinHLview()
         setupExplanationLabel()
+        
+        //initiate bar bar controller
+        customTabBarController = self.tabBarController as? BaseTabBarController
     }
     
     //setup maximum HL
@@ -261,4 +266,27 @@ class HLSettingViewController: UIViewController {
         explanationLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 8).isActive = true
     }
     
+    @objc func setCustomeHumidityLevel(_ sender: Any){
+        let firebase = customTabBarController?.humidiferFirebase
+        
+        let maxHL = Int(self.maxSlider.value)
+        let minHL = Int(self.minSlider.value)
+        
+        if maxHL > minHL{
+            firebase?.setHumidityHigherLevel(highLevel: "\(maxHL)%")
+            firebase?.setHumidityLowerLevel(lowLevel: "\(minHL)%")
+        }else{
+
+        }
+    }
+    
+    private func successMessage(){
+        let message = AlertMessage.displayErrorMessage(title: "Congrats", message: "Setting done.")
+        self.present(message,animated: true,completion: nil)
+    }
+    
+    private func invalidSettingMessage(){
+        let message = AlertMessage.displayErrorMessage(title: "Error", message: "Maximum level shouldn't be lower than minimum level.")
+        self.present(message,animated: true,completion: nil)
+    }
 }
