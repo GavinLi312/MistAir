@@ -42,10 +42,14 @@ class MoreTableViewCell: UITableViewCell {
         return sw
     }()
     
+    var forUse : String!
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
+    
+    
     
     //set up the more cell
     func setupCell(){
@@ -76,9 +80,24 @@ class MoreTableViewCell: UITableViewCell {
         modeSwitch.translatesAutoresizingMaskIntoConstraints = false
         self.modeSwitch.rightAnchor.constraint(equalTo: self.cellView.rightAnchor, constant: -16).isActive = true
         self.modeSwitch.centerYAnchor.constraint(equalTo: self.cellView.centerYAnchor).isActive = true
+        modeSwitch.addTarget(self, action:#selector(self.switchisTouched), for: UIControlEvents.valueChanged)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func switchisTouched(){
+        switch forUse {
+        case sectionArray[0]:
+            print(sectionArray[0])
+        case sectionArray[1]:
+            print(sectionArray[1])
+        case sectionArray[2]:
+            print(sectionArray[2])
+        default:
+            print("just a place Holder")
+        }
+
     }
 }
