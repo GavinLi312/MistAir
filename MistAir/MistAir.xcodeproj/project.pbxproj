@@ -11,6 +11,13 @@
 		3203B15B216DE89B00E00955 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B158216DE89B00E00955 /* BaseTabBarController.swift */; };
 		3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B159216DE89B00E00955 /* CustomColour.swift */; };
 		3203B15D216DE89B00E00955 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203B15A216DE89B00E00955 /* Colour.swift */; };
+		32DE6695218E9EE400BEA99B /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE668E218E9EE200BEA99B /* MoreController.swift */; };
+		32DE6696218E9EE400BEA99B /* ExplanationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE668F218E9EE300BEA99B /* ExplanationTableViewCell.swift */; };
+		32DE6697218E9EE400BEA99B /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE6690218E9EE300BEA99B /* MoreTableViewCell.swift */; };
+		32DE6698218E9EE400BEA99B /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE6691218E9EE300BEA99B /* HeaderTableViewCell.swift */; };
+		32DE6699218E9EE400BEA99B /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE6692218E9EE300BEA99B /* SettingTableViewCell.swift */; };
+		32DE669A218E9EE400BEA99B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE6693218E9EE300BEA99B /* LoginViewController.swift */; };
+		32DE669B218E9EE400BEA99B /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE6694218E9EE300BEA99B /* Mode.swift */; };
 		624A36C6AFB4D1702CEAB14A /* Pods_MistAirTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA92B556EE55A33CA1761F49 /* Pods_MistAirTests.framework */; };
 		A300C91721761CAE0084D7BE /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300C91621761CAE0084D7BE /* TimerController.swift */; };
 		A300C919217712010084D7BE /* CircleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300C918217712010084D7BE /* CircleSlider.swift */; };
@@ -50,6 +57,13 @@
 		3203B158216DE89B00E00955 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		3203B159216DE89B00E00955 /* CustomColour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColour.swift; sourceTree = "<group>"; };
 		3203B15A216DE89B00E00955 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		32DE668E218E9EE200BEA99B /* MoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
+		32DE668F218E9EE300BEA99B /* ExplanationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplanationTableViewCell.swift; sourceTree = "<group>"; };
+		32DE6690218E9EE300BEA99B /* MoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		32DE6691218E9EE300BEA99B /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		32DE6692218E9EE300BEA99B /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		32DE6693218E9EE300BEA99B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		32DE6694218E9EE300BEA99B /* Mode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		39E0A8462956D1FFE36CE87C /* Pods-MistAir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAir.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAir/Pods-MistAir.debug.xcconfig"; sourceTree = "<group>"; };
 		77E11AC791C34630E739FFE3 /* Pods-MistAirUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirUITests/Pods-MistAirUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C5FFE71A6FF894A930E59A9 /* Pods-MistAirTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirTests/Pods-MistAirTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +119,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32DE669C218E9F0D00BEA99B /* Fourth Tab - More */ = {
+			isa = PBXGroup;
+			children = (
+				32DE668F218E9EE300BEA99B /* ExplanationTableViewCell.swift */,
+				32DE6691218E9EE300BEA99B /* HeaderTableViewCell.swift */,
+				32DE6694218E9EE300BEA99B /* Mode.swift */,
+				32DE668E218E9EE200BEA99B /* MoreController.swift */,
+				32DE6690218E9EE300BEA99B /* MoreTableViewCell.swift */,
+				32DE6692218E9EE300BEA99B /* SettingTableViewCell.swift */,
+			);
+			path = "Fourth Tab - More";
+			sourceTree = "<group>";
+		};
+		32DE669D218E9F2200BEA99B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				32DE6693218E9EE300BEA99B /* LoginViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		6A10F34EA4D1C806D3ADD19D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +188,8 @@
 		A328DAE4216DE762009DCADB /* MistAir */ = {
 			isa = PBXGroup;
 			children = (
+				32DE669D218E9F2200BEA99B /* Authentication */,
+				32DE669C218E9F0D00BEA99B /* Fourth Tab - More */,
 				A328DAF4216DE765009DCADB /* Info.plist */,
 				A3ECEC4D218E9CA50031EC7A /* Firebase */,
 				A3ECEC4C218E9C680031EC7A /* Support Files */,
@@ -482,15 +519,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				3203B15B216DE89B00E00955 /* BaseTabBarController.swift in Sources */,
+				32DE6698218E9EE400BEA99B /* HeaderTableViewCell.swift in Sources */,
 				A300C91B21785D180084D7BE /* TimeFormatter.swift in Sources */,
 				A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */,
 				A300C919217712010084D7BE /* CircleSlider.swift in Sources */,
+				32DE6697218E9EE400BEA99B /* MoreTableViewCell.swift in Sources */,
+				32DE6699218E9EE400BEA99B /* SettingTableViewCell.swift in Sources */,
 				A3ECEC45218C642D0031EC7A /* AlertMessage.swift in Sources */,
+				32DE669B218E9EE400BEA99B /* Mode.swift in Sources */,
 				3203B15D216DE89B00E00955 /* Colour.swift in Sources */,
 				3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */,
 				A300C91721761CAE0084D7BE /* TimerController.swift in Sources */,
 				A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */,
 				A3ECEC43218C336B0031EC7A /* HumidifierFireBase.swift in Sources */,
+				32DE669A218E9EE400BEA99B /* LoginViewController.swift in Sources */,
+				32DE6696218E9EE400BEA99B /* ExplanationTableViewCell.swift in Sources */,
+				32DE6695218E9EE400BEA99B /* MoreController.swift in Sources */,
 				A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -140,7 +140,7 @@ class BaseTabBarController: UITabBarController {
     func createMoreController() -> UINavigationController{
         
         //create a moreController [it is an empty UIView for now]
-        let moreController = UIViewController()
+        let moreController = MoreController()
         
         //assign the moreController as the root controller
         let moreNavigationController = UINavigationController(rootViewController: moreController)

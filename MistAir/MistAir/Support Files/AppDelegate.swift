@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //set tab bar as the root view
         window?.rootViewController = BaseTabBarController()
+        //window?.rootViewController = LoginViewController()
         
         //MARK: change navigation bar setting
         //change bar tint color
