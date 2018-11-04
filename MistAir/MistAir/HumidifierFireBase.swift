@@ -20,7 +20,7 @@ struct humidifierStatus {
     var humidityHistory : [String:String] = [:]
     var roomVacancy = false
     var status = false
-    var timer : [String: String] = [:]
+    var timer = TimerFirebase()
     var waterSufficient = false
 }
 
@@ -65,10 +65,15 @@ class HumidifierFirebase {
                     self.myHumidifierStatus.PDMode = humidifierfirebase?["HLMode"] as! Bool
                     self.myHumidifierStatus.humidityHistory = humidifierfirebase!["humidity History"] as! [String:String]
                     self.myHumidifierStatus.turnOnTime = NSDate(timeIntervalSince1970: (humidifierfirebase!["Turn on time"] as! Double))
-
+                    var timerArray = humidifierfirebase!["timer"] as! [String:Any]
+                    self.myHumidifierStatus.timer.startTime = NSDate(timeIntervalSince1970: (timerArray["start Time"] as! Double))
+                    self.myHumidifierStatus.timer.duration = timerArray["duration"] as! TimeInterval
+                    self.myHumidifierStatus.timer.timerStatus = timerArray["status"] as! Bool
+                    
                     self.myHumidifierStatus.roomVacancy = humidifierfirebase!["room vacant"] as! Bool
                     self.myHumidifierStatus.status = humidifierfirebase!["status"] as! Bool
                     self.myHumidifierStatus.waterSufficient = humidifierfirebase!["water Sufficient"] as! Bool
+                    
                     print(self.myHumidifierStatus.turnOnTime)
                     print(NSDate.convertNSdateToString(date: self.myHumidifierStatus.turnOnTime))
                     print(self.myHumidifierStatus)
@@ -115,6 +120,17 @@ class HumidifierFirebase {
     }
     func setHumidityLowerLevel(lowLevel:String) {
         humidifierRef?.child(self.humidifierKey).child("Humidity Higher Level").setValue(lowLevel)
+    }
+    
+    func setTimer(newTimer:TimerFirebase) {
+        
+        let data = [
+            "start Time": newTimer.startTime.timeIntervalSince1970,
+            "duration": newTimer.duration,
+            "status":newTimer.timerStatus
+            ] as [String : Any]
+        
+        humidifierRef?.child(self.humidifierKey).child("timer").setValue(data)
     }
     
 }

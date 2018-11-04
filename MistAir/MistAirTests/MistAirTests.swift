@@ -39,4 +39,11 @@ class MistAirTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func testDateDifference(){
+        let date1 = NSDate()
+        let date2 = NSDate(timeIntervalSinceNow: 2400)
+        print(NSDate.caulculateTimeDifference(date1: date1, date2: date2))
+        
+    }
+    
 }

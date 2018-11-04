@@ -12,9 +12,9 @@ protocol ReadTimeDelegate {
 }
 
 
-struct timerFirebase {
+struct TimerFirebase {
     var startTime:NSDate = NSDate()
-    var Duration : TimeInterval = 0.0
+    var duration : TimeInterval = 0.0
     var timerStatus = false
     
 }
@@ -25,6 +25,10 @@ class TimerController: UIViewController,ReadTimeDelegate {
 //    let shapeLayer = CAShapeLayer()
 //    var pulsatingLayer: CAShapeLayer!
     var currentCircleSlider: CircleSlider!
+    
+    var startAndEndTime : [NSDate] = []
+    
+    var customedTabBarController : BaseTabBarController?
     
     let startLabel : UILabel = {
         let label = UILabel()
@@ -94,14 +98,13 @@ class TimerController: UIViewController,ReadTimeDelegate {
         initializeStartTimeLabel()
         initializeEndTimeLabel()
         initializeButton()
-//        addImageToTheCircle()
+        self.customedTabBarController = self.tabBarController as! BaseTabBarController
+        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)
+        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)
+        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
+        
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.pulsatingLayer != nil{
-////            animatePulsatingLayer()
-//        }
-//    }
     
     ///backGroundPageview
     func initializeBackGroundView(){
@@ -110,6 +113,7 @@ class TimerController: UIViewController,ReadTimeDelegate {
         self.view.backgroundColor = UIColor.darkPurple
         self.view.addSubview(backgroundView)
     }
+    
     
 
 
@@ -196,17 +200,15 @@ class TimerController: UIViewController,ReadTimeDelegate {
             self.setButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
             self.setButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
             self.setButton.topAnchor.constraint(equalTo: self.currentCircleSlider.bottomAnchor, constant: 0).isActive = true
-
-            
         }
         self.setButton.addTarget(self, action: #selector(setButtonIsClicked(_:)), for: .touchUpInside)
     }
     
     func changeLabel(startMinute:Int,Duration:Int) {
         DispatchQueue.main.async{
-            var BeginAndEndTime = self.getTimeByMinute(minute: startMinute, duration: Duration)
-            self.startTime.text = "\(NSDate.convertNSdateToString(date: BeginAndEndTime[0]))"
-            self.endTime.text = "\((NSDate.convertNSdateToString(date: BeginAndEndTime[1])))"
+            self.startAndEndTime = self.getTimeByMinute(minute: startMinute, duration: Duration)
+            self.startTime.text = "\(NSDate.convertNSdateToString(date: self.startAndEndTime[0]))"
+            self.endTime.text = "\((NSDate.convertNSdateToString(date: self.startAndEndTime[1])))"
         }
     }
     
@@ -216,7 +218,20 @@ class TimerController: UIViewController,ReadTimeDelegate {
         return [startDate,endDate]
     }
     
+    
     @objc func setButtonIsClicked(_ sender: UIButton) {
-        print("yeah i am touched")
+        var newTimer = TimerFirebase()
+        newTimer.startTime = self.startAndEndTime[0]
+        let startTimeDiffer = startAndEndTime[0].timeIntervalSinceNow
+        let endTimeDiffer = startAndEndTime[1].timeIntervalSinceNow
+        newTimer.duration = endTimeDiffer - startTimeDiffer
+        newTimer.timerStatus = true
+        customedTabBarController?.humidiferFirebase.setTimer(newTimer: newTimer)
     }
+    
+    func getEndTime(){
+        
+    }
+    
+    
 }

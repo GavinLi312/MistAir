@@ -302,4 +302,11 @@ class CircleSlider: UIView {
         let minutes = percentage * CGFloat(self.time)
         return Int(minutes)
     }
+    
+    func getAngleFromMinute(minute:Int) -> CGFloat{
+        var angle : CGFloat!
+        var percentage = CGFloat(minute)/CGFloat(self.time)
+        angle = percentage * 2 * CGFloat.pi
+        return angle
+    }
 }
