@@ -71,8 +71,8 @@ class HumidifierFirebase {
                     self.myHumidifierStatus.HLMode = humidifierfirebase?["HLMode"] as! Bool
                     self.myHumidifierStatus.humidityHigherLevel = humidifierfirebase!["Humidity Higher Level"] as! String
                     self.myHumidifierStatus.humidityLowerLevel = humidifierfirebase!["Humidity Lower Level"] as! String
-                    self.myHumidifierStatus.PDMode = humidifierfirebase?["HLMode"] as! Bool
-                    self.myHumidifierStatus.humidityHistory = humidifierfirebase!["humidity History"] as! [String:String]
+                    self.myHumidifierStatus.PDMode = humidifierfirebase?["PDMode"] as! Bool
+                    //self.myHumidifierStatus.humidityHistory = humidifierfirebase!["humidity History"] as! [String:String]
                     self.myHumidifierStatus.turnOnTime = NSDate(timeIntervalSince1970: (humidifierfirebase!["Turn on time"] as! Double))
                     var timerArray = humidifierfirebase!["timer"] as! [String:Any]
                     self.myHumidifierStatus.timer.startTime = NSDate(timeIntervalSince1970: (timerArray["start Time"] as! Double))
