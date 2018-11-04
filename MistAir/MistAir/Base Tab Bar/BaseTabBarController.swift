@@ -11,6 +11,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 
 //https://gist.github.com/mahmudahsan/bcc1272433e38f1efd3c2389c75cd00f github detect current Iphone device
@@ -40,18 +41,33 @@ class BaseTabBarController: UITabBarController {
     
     var activityIndicator = UIActivityIndicatorView()
     
-    
+    //firebase authentication handler
+    var handle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //set up tab bar
         setupTabBar()
-        
-
+    
         //add controllers to tab bar controllers
         viewControllers = [createHomePageController(),createTimerController(),createStatisticsController(),createMoreController()]
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //if already registered and logged in, go straight to main page
+        handle = Auth.auth().addStateDidChangeListener({(auth,user)in
+            if user == nil{
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
     func setupTabBar(){
         //modify background colour of tab bar
         tabBar.barTintColor = UIColor.lightPurple
