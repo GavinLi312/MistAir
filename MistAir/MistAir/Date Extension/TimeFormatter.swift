@@ -17,6 +17,13 @@ extension NSDate{
         return string
     }
     
+    static func convertDateToFullString(date: NSDate) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE dd MMM yyyy HH:mm"
+        let string = dateFormatter.string(from: date as Date)
+        return string
+    }
+    
     static func caulculateTimeDifference(date1:NSDate,date2:NSDate) -> Int{
         let timeInterval1 = date1.timeIntervalSince1970
         let timeInterval2 = date2.timeIntervalSince1970
@@ -24,6 +31,8 @@ extension NSDate{
         let minutes = diff / 60
         return minutes
     }
+    
+    
     
     static func stringFromTimeInterval(interval: TimeInterval) -> String {
         let interval = Int(interval)
@@ -33,4 +42,11 @@ extension NSDate{
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
     
+    static func stringFromTimeIntervalAsHourAndMinutes(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+//        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d", hours, minutes)
+    }
 }

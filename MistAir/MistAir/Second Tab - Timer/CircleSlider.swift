@@ -72,6 +72,7 @@ class CircleSlider: UIView {
     
     var endImageView:UIImageView!
     
+    var myClockImageView:UIImageView!
     // * Functions to start the things *
     
     func makeSlider() -> Bool {
@@ -103,8 +104,10 @@ class CircleSlider: UIView {
         if end_point == nil{
             end_point = getPointOnCircle(forPoint: startpoint)
         }
+        
         beginImageView = UIImageView(frame: CGRect(x: start_point!.x, y: start_point!.y, width: circle_width, height: circle_width))
         endImageView = UIImageView(frame: CGRect(x: start_point!.x, y: start_point!.y, width: circle_width, height: circle_width))
+        myClockImageView = UIImageView(frame: CGRect(x: circle_center.x, y: circle_center.y, width: circle_diameter - circle_width/2, height: circle_diameter - circle_width/2))
         self.setNeedsDisplay()
         return true
     }
@@ -119,8 +122,10 @@ class CircleSlider: UIView {
         
         let context = UIGraphicsGetCurrentContext()
         context!.clear(self.bounds)
+        initializeMyClockImageView()
         initializeStartImageView()
         initializeEndImageView()
+
         circle_color.setStroke()
         drawn_circle.stroke()
         if touch_trail != nil { trail_color.setStroke(); touch_trail.stroke() }
@@ -155,11 +160,11 @@ class CircleSlider: UIView {
                 self.beginImageView?.removeFromSuperview()
             }
         }
-        let image = UIImage(named: "homepage_empty-20")
+        let image = UIImage(named: "play-button-20")
         
         beginImageView!.contentMode = .scaleToFill
-        beginImageView!.tintColor = UIColor.authBackgroundPurple
-        beginImageView?.backgroundColor = UIColor.authBackgroundPurple
+        beginImageView!.tintColor = UIColor.white
+        beginImageView?.backgroundColor = UIColor.darkPurple
         beginImageView!.image = image
         beginImageView!.layer.cornerRadius = 0.5 * beginImageView!.bounds.size.width
         beginImageView!.layer.borderColor = UIColor.brightPurple.withAlphaComponent(0.8).cgColor
@@ -177,11 +182,11 @@ class CircleSlider: UIView {
                 self.endImageView?.removeFromSuperview()
             }
         }
-        let image = UIImage(named: "homepage_empty-20")
+        let image = UIImage(named: "stop-20")
         
         endImageView!.contentMode = .scaleToFill
         endImageView!.tintColor = UIColor.authBackgroundPurple
-        endImageView?.backgroundColor = UIColor.authBackgroundPurple
+        endImageView?.backgroundColor = UIColor.darkPurple
         endImageView!.image = image
         endImageView!.layer.cornerRadius = 0.5 * endImageView!.bounds.size.width
         endImageView!.layer.borderColor = UIColor.brightPurple.withAlphaComponent(0.8).cgColor
@@ -192,7 +197,22 @@ class CircleSlider: UIView {
         return endImageView!
     }
     
-    private func pointOnCircle(forRad rad: CGFloat, withRadius radius: CGFloat) -> CGPoint {
+    func initializeMyClockImageView() -> UIImageView {
+        
+        let image = UIImage(named: "myCLockVersion3white-1024")?.alpha(0.5)
+        myClockImageView!.contentMode = .scaleToFill
+        myClockImageView!.tintColor = UIColor.authBackgroundPurple
+        myClockImageView?.backgroundColor = UIColor.darkPurple
+        myClockImageView!.image = image
+        myClockImageView!.layer.cornerRadius = 0.5 * myClockImageView!.bounds.size.width
+        myClockImageView!.layer.borderColor = UIColor.brightPurple.withAlphaComponent(0.8).cgColor
+        myClockImageView!.layer.borderWidth = 2
+        myClockImageView.center = self.circle_center
+        self.addSubview(myClockImageView)
+//        self.bringSubview(toFront: myClockImageView)
+        return myClockImageView
+    }
+    func pointOnCircle(forRad rad: CGFloat, withRadius radius: CGFloat) -> CGPoint {
         let x = radius * cos(rad)
         let y = radius * sin(rad)
         return CGPoint(x: x + circle_center.x, y: y + circle_center.y)
@@ -310,18 +330,32 @@ class CircleSlider: UIView {
         var percentage = CGFloat(minute)/CGFloat(self.time)
         angle = percentage * 2 * CGFloat.pi
         self.start_rad = angle
-        return angle
+//        self.start_point = pointOnCircle(forRad: self.start_rad!, withRadius: circle_diameter / 2)
+        return start_rad!
     }
     
     func getEndAngleFromMinute(minute:Int) -> CGFloat {
         var angle : CGFloat!
-        var percentage = CGFloat(minute)/CGFloat(self.time)
-        angle = percentage * 2 * CGFloat.pi
-        self.end_rad = angle
-        return angle
+        let percentage = CGFloat(minute)/CGFloat(self.time)
+        angle = percentage * 2 * CGFloat.pi + self.start_rad!
+//        self = ((self.start_rad! + angle) > CGFloat.pi * 2 ) ? ((self.start_rad! + angle) - CGFloat.pi * 2) : (self.start_rad! + angle)
+//        self.end_point = pointOnCircle(forRad: self.end_rad!, withRadius: circle_diameter / 2)
+        return angle!
     }
     
     
     
     
+}
+
+//https://stackoverflow.com/questions/28517866/how-to-set-the-alpha-of-an-uiimage-in-swift-programmatically
+extension UIImage {
+    
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
 }

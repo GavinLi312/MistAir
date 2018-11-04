@@ -19,7 +19,15 @@ struct TimerFirebase {
     
 }
 
-class TimerController: UIViewController,ReadTimeDelegate {
+protocol TimerControllerFirebase {
+    
+    func waterSourceChange(waterStatus:Bool)
+    
+    func timerStatusCanceled()
+}
+
+
+class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase {
 
 
 //    let shapeLayer = CAShapeLayer()
@@ -28,7 +36,9 @@ class TimerController: UIViewController,ReadTimeDelegate {
     
     var startAndEndTime : [NSDate] = []
     
-    var customedTabBarController : BaseTabBarController?
+    var customedTabBarController : BaseTabBarController? 
+    
+    var startandEndAngle : [CGFloat] = []
     
     let startLabel : UILabel = {
         let label = UILabel()
@@ -78,11 +88,11 @@ class TimerController: UIViewController,ReadTimeDelegate {
     
     let setButton : UIButton = {
         let button = UIButton()
-        button.setTitle("SET", for: .normal)
+        button.setTitle(" SET", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.setImage(UIImage(named: "homepage_empty-20"), for: .normal)
+        button.setImage(UIImage(named: "timer-20"), for: .normal)
         button.backgroundColor = UIColor.buttonPurple
         button.layer.cornerRadius = 5
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -91,22 +101,100 @@ class TimerController: UIViewController,ReadTimeDelegate {
         return button
     }()
     
+    let timeLabel : UILabel = {
+        let label = UILabel()
+        label.text = "00:00"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 50)
+        label.textColor = UIColor.white
+//        label.layer.borderColor = UIColor.black.cgColor
+//        label.layer.borderWidth = 2
+        
+        return label
+    }()
+
+    var timerStatusLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Start"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = UIColor.white
+//        label.layer.borderColor = UIColor.black.cgColor
+//        label.layer.borderWidth = 2
+        
+        return label
+    }()
+    
+    var timer: Timer = Timer()
+    
+    var timerControllerTimerStatus : HumidifierSwitchStatus = .off{
+        didSet{
+            switch timerControllerTimerStatus {
+            case .on:
+                print(timerControllerTimerStatus)
+                self.setButton.setTitle(" CANCEL", for: .normal)
+                self.currentCircleSlider.isUserInteractionEnabled = false
+                self.startTiming()
+                self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.startTiming), userInfo: nil, repeats: true)
+                
+                //self.currentCircleSlider.
+//                self.humidifierStatusLabel.text = "On"
+//                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .down)
+//                self.switchButton.setImage(buttonImage, for: .normal)
+//                self.switchButton.setTitle(" TURN OFF", for: .normal)
+//                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startTimer), userInfo: nil, repeats: true)
+            case .off:
+                print(timerControllerTimerStatus)
+                self.setButton.setTitle(" SET", for: .normal)
+                self.currentCircleSlider.isUserInteractionEnabled = true
+                self.timerStatusLabel.text = "Closed"
+                if timer.isValid == true{
+                    timer.invalidate()
+
+                    self.timeLabel.text = "00:00"
+                }
+//                self.humidifierStatusLabel.text = "Off"
+//                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .up)
+//                self.switchButton.setImage(buttonImage, for: .normal)
+//                self.switchButton.setTitle(" TURN ON", for: .normal)
+//                self.runningTimeLabel.text = "00:00:00"
+//                if self.timer.isValid == true{
+//                    self.timer.invalidate()
+//                }
+            case .noWater:
+                print(timerControllerTimerStatus)
+//                self.timerStatusLabel.text = "N"
+                self.setButton.setTitle(" No Water", for: .normal)
+                
+                self.currentCircleSlider.isUserInteractionEnabled = false
+//                self.humidifierStatusLabel.text = "No Water"
+//                print("i have no water")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.customedTabBarController = self.tabBarController as? BaseTabBarController
         initializeBackGroundView()
         initializeCircleView()
         initializeStartTimeLabel()
         initializeEndTimeLabel()
         initializeButton()
-        self.customedTabBarController = self.tabBarController as? BaseTabBarController
-//        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)
-//        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)
-//        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
-        self.startAndEndTime = self.getStartTimeAndEndTime(startTime: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)!, duration: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)!)
+        initializeTimeLabel()
+        initializeTimeStatus()
+        if self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.waterSufficient == true{
         
-        print(self.currentCircleSlider.getStartAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: NSDate(), date2:self.startAndEndTime[0])))
-        print(self.currentCircleSlider.getEndAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: self.startAndEndTime[0], date2: self.startAndEndTime[1])))
-        
+            if self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus == true{
+                self.timerControllerTimerStatus = .on
+            }else if customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus == false{
+                self.timerControllerTimerStatus = .off
+            }
+        }else{
+            self.timerControllerTimerStatus = .noWater
+        }
+
+
     }
     
     
@@ -125,10 +213,22 @@ class TimerController: UIViewController,ReadTimeDelegate {
         if currentCircleSlider != nil { currentCircleSlider.removeFromSuperview() }
         
         let circleSlider = CircleSlider(frame: CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.width))
+
         
         circleSlider.makeSlider()
-//        circleSlider.start_point = CGPoint(x: circleSlider.circle_center.x, y: circleSlider.circle_center.y - circleSlider.circle_diameter/2)
-//        circleSlider.end_point = CGPoint(x: circleSlider.circle_center.x + circleSlider.circle_diameter/2, y: circleSlider.circle_center.y )
+        
+        self.customedTabBarController?.humidiferFirebase.timerPageProtocol = self
+        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)
+        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)
+                print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
+
+        self.startAndEndTime = self.getStartTimeAndEndTime(startTime: ((self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)!), duration: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)!)
+        
+        
+        self.startandEndAngle = [circleSlider.getStartAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: NSDate(), date2:self.startAndEndTime[0])),circleSlider.getEndAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: self.startAndEndTime[0], date2: self.startAndEndTime[1]))]
+        circleSlider.start_point = circleSlider.pointOnCircle(forRad: self.startandEndAngle[0] - CGFloat.pi/2, withRadius: circleSlider.circle_diameter/2)
+        circleSlider.end_point = circleSlider.pointOnCircle(forRad: self.startandEndAngle[1] - CGFloat.pi/2, withRadius: circleSlider.circle_diameter/2)
+
         circleSlider.updateTouchTrail()
         circleSlider.changeLabelProtocol = self
         currentCircleSlider = circleSlider
@@ -208,9 +308,27 @@ class TimerController: UIViewController,ReadTimeDelegate {
         self.setButton.addTarget(self, action: #selector(setButtonIsClicked(_:)), for: .touchUpInside)
     }
     
+    func initializeTimeLabel(){
+        view.addSubview(self.timeLabel)
+        self.timeLabel.frame = CGRect(x: self.currentCircleSlider.circle_center.x, y: self.currentCircleSlider.circle_center.y, width: 180, height: 60)
+        self.timeLabel.center.x = self.currentCircleSlider.center.x
+        self.timeLabel.center.y = self.currentCircleSlider.center.y
+    }
+    
+    func initializeTimeStatus(){
+        view.addSubview(self.timerStatusLabel)
+        timerStatusLabel.translatesAutoresizingMaskIntoConstraints = false
+//        self.timerStatusLabel.frame = CGRect(x: self.currentCircleSlider.circle_center.x, y: self.currentCircleSlider.circle_center.y, width: 60, height: 60)
+        self.timerStatusLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        self.timerStatusLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        self.timerStatusLabel.bottomAnchor.constraint(equalTo: self.timeLabel.topAnchor, constant: 0).isActive = true
+        self.timerStatusLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+    }
+    
     func changeLabel(startMinute:Int,Duration:Int) {
         DispatchQueue.main.async{
             self.startAndEndTime = self.getTimeByMinute(minute: startMinute, duration: Duration)
+//            print(self.startAndEndTime)
             self.startTime.text = "\(NSDate.convertNSdateToString(date: self.startAndEndTime[0]))"
             self.endTime.text = "\((NSDate.convertNSdateToString(date: self.startAndEndTime[1])))"
         }
@@ -219,24 +337,101 @@ class TimerController: UIViewController,ReadTimeDelegate {
     func getTimeByMinute(minute:Int,duration:Int) -> [NSDate] {
         let startDate = NSDate(timeIntervalSinceNow: TimeInterval(minute * 60))
         let endDate = startDate.addingTimeInterval(TimeInterval(duration*60))
+        print(NSDate.convertDateToFullString(date: startDate))
+        print(NSDate.convertDateToFullString(date: endDate))
         return [startDate,endDate]
     }
     
     
-    @objc func setButtonIsClicked(_ sender: UIButton) {
-        var newTimer = TimerFirebase()
-        newTimer.startTime = self.startAndEndTime[0]
-        let startTimeDiffer = startAndEndTime[0].timeIntervalSinceNow
-        let endTimeDiffer = startAndEndTime[1].timeIntervalSinceNow
-        newTimer.duration = endTimeDiffer - startTimeDiffer
-        newTimer.timerStatus = true
-        customedTabBarController?.humidiferFirebase.setTimer(newTimer: newTimer)
+    @objc func setButtonIsClicked(_ sender: Any) {
+        print(self.timerControllerTimerStatus)
+        if self.timerControllerTimerStatus == .noWater{
+            self.noWaterWarning()
+        }else{
+            if self.timerControllerTimerStatus == .off{
+                let homeController = customedTabBarController?.viewControllers![0].childViewControllers[0] as! HomePageController
+                if customedTabBarController?.humidiferFirebase.myHumidifierStatus.status == true{
+                    homeController.switchButtonWasPressed(self)
+                }
+                var newTimer = TimerFirebase()
+                newTimer.startTime = self.startAndEndTime[0]
+                let startTimeDiffer = startAndEndTime[0].timeIntervalSinceNow
+                let endTimeDiffer = startAndEndTime[1].timeIntervalSinceNow
+                
+                newTimer.duration = endTimeDiffer - startTimeDiffer
+                newTimer.timerStatus = true
+                customedTabBarController?.humidiferFirebase.setTimer(newTimer: newTimer)
+                self.timerControllerTimerStatus = .on
+            }else if self.timerControllerTimerStatus == .on{
+                customedTabBarController?.humidiferFirebase.cancelTimer()
+                self.timerControllerTimerStatus = .off
+            }
+        }
     }
+    
     
     func getStartTimeAndEndTime(startTime:NSDate,duration:TimeInterval) -> [NSDate]{
         var endDate = startTime.addingTimeInterval(duration)
-        return [startTime,endDate]
+        var startDate = startTime
+        if startTime.compare(NSDate() as Date) == ComparisonResult.orderedAscending{
+            startDate = NSDate()
+        }
+        
+        if endDate.compare(NSDate() as Date) == ComparisonResult.orderedAscending{
+            endDate = NSDate()
+        }
+        return [startDate,endDate]
     }
     
+    func waterSourceChange(waterStatus: Bool) {
+//        print("i am running")
+        if waterStatus == true{
+            self.timerControllerTimerStatus = .off
+            self.setButton.setTitle("Ready", for: .normal)
+        }else{
+            if self.timerControllerTimerStatus == .on{
+                self.setButtonIsClicked(self)
+            }
+            self.timerControllerTimerStatus = .noWater
+            print(self.timerControllerTimerStatus)
+            noWaterWarning()
+        }
+
+    }
     
+    func timerStatusCanceled() {
+        
+        if self.timerControllerTimerStatus != .off{
+            if self.timerControllerTimerStatus != .noWater{
+            self.timerControllerTimerStatus = .off
+            }
+        }
+    }
+    
+    func noWaterWarning(){
+        let alertController = AlertMessage.displayErrorMessage(title: "Water Source", message: "The Water Source of the humidifier is not sufficient, Please Check.")
+        self.present(alertController, animated: true, completion: nil)
+        AlertMessage.pushNotification(title: "Water Source", body: "The Water Source of the humidifier is not sufficient, Please Check.")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            alertController.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc func startTiming(){
+        
+        let reference = NSDate()
+        
+        if self.startAndEndTime[0].compare(reference as Date) == ComparisonResult.orderedAscending{
+            if self.startAndEndTime[1].compare(reference as Date) == ComparisonResult.orderedDescending{
+                self.timerStatusLabel.text = "Running"
+                self.timeLabel.text = NSDate.stringFromTimeIntervalAsHourAndMinutes(interval: self.startAndEndTime[1].timeIntervalSinceNow)
+            }else{
+                print("should not happen")
+            }
+        }else{
+            //self.timeLabel =
+            self.timerStatusLabel.text = "Start"
+            self.timeLabel.text = NSDate.stringFromTimeIntervalAsHourAndMinutes(interval: self.startAndEndTime[0].timeIntervalSinceNow)
+        }
+    }
 }
