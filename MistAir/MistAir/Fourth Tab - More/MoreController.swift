@@ -124,13 +124,16 @@ class MoreController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pair = (indexPath.section,indexPath.row)
         switch pair {
+        //humidity level setting
+        case (0,1):
+            self.navigationController?.pushViewController(HLSettingViewController(), animated: true)
         //logout
         case (2,2):
-            let controller = LogoutViewController()
-            self.present(controller,animated: true,completion: nil)
+            self.navigationController?.pushViewController(LogoutViewController(), animated: true)
         default:
             print("")
         }
+        tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor.darkPurple
     }
     
 

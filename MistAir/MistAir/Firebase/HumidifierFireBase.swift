@@ -149,7 +149,7 @@ class HumidifierFirebase {
         humidifierRef?.child(self.humidifierKey).child("Humidity Higher Level").setValue(highLevel)
     }
     func setHumidityLowerLevel(lowLevel:String) {
-        humidifierRef?.child(self.humidifierKey).child("Humidity Higher Level").setValue(lowLevel)
+        humidifierRef?.child(self.humidifierKey).child("Humidity Lower Level").setValue(lowLevel)
     }
     
     func setTimer(newTimer:TimerFirebase) {

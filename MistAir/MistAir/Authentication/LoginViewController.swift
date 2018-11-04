@@ -510,7 +510,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginFirebaseAccount(email, password)
             
             //save humidifier id to user defaults
-            //UserDefaults.standard.set(self.humidifierID, forKey: "Humidifier ID")
+            UserDefaults.standard.set(self.humidifierID, forKey: "Humidifier ID")
         }
     }
     
