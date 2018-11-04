@@ -13,6 +13,10 @@ class HLSettingViewController: UIViewController {
 
     var customTabBarController : BaseTabBarController?
     
+    var existingMaxLevel: String?
+    
+    var existingMinLevel: String?
+    
     //draw UI programatically
     
     //for maximum level setting
@@ -109,6 +113,20 @@ class HLSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //initiate bar bar controller
+        customTabBarController = self.tabBarController as? BaseTabBarController
+        
+        let myMax = customTabBarController?.humidiferFirebase.myHumidifierStatus.humidityHigherLevel
+        if  myMax != nil || myMax != ""{
+            existingMaxLevel = myMax
+        }
+        
+        let myMin = customTabBarController?.humidiferFirebase.myHumidifierStatus.humidityLowerLevel
+        if myMin != nil || myMin != ""{
+            existingMinLevel = myMin
+        }
+        
+        
         //background colour
         self.view.backgroundColor = UIColor.darkPurple
         
@@ -119,9 +137,7 @@ class HLSettingViewController: UIViewController {
         setupMaxHLview()
         setupMinHLview()
         setupExplanationLabel()
-        
-        //initiate bar bar controller
-        customTabBarController = self.tabBarController as? BaseTabBarController
+
     }
     
     //setup maximum HL
@@ -170,6 +186,7 @@ class HLSettingViewController: UIViewController {
     }
     
     private func addConstraintForMaxLevelLabel(){
+        maxLevelLabel.text = existingMaxLevel
         maxLevelLabel.heightAnchor.constraint(equalToConstant: 55).isActive = true
         maxLevelLabel.leftAnchor.constraint(equalTo: self.maxHLView.leftAnchor, constant: 8).isActive = true
         maxLevelLabel.rightAnchor.constraint(equalTo: self.maxHLView.rightAnchor, constant: -8).isActive = true
@@ -177,6 +194,7 @@ class HLSettingViewController: UIViewController {
     }
     
     private func addConstraintForMaxSlider(){
+        maxSlider.setValue(Float(changePercentageToInt(percentage: existingMaxLevel!)), animated: true)
         maxSlider.heightAnchor.constraint(equalToConstant: 55).isActive = true
         maxSlider.leftAnchor.constraint(equalTo: self.maxHLView.leftAnchor, constant: 8).isActive = true
         maxSlider.rightAnchor.constraint(equalTo: self.maxHLView.rightAnchor, constant: -8).isActive = true
@@ -236,6 +254,7 @@ class HLSettingViewController: UIViewController {
     }
     
     private func addConstraintForMinLevelLabel(){
+        minLevelLabel.text = existingMinLevel
         minLevelLabel.heightAnchor.constraint(equalToConstant: 55).isActive = true
         minLevelLabel.leftAnchor.constraint(equalTo: self.minHLView.leftAnchor, constant: 8).isActive = true
         minLevelLabel.rightAnchor.constraint(equalTo: self.minHLView.rightAnchor, constant: -8).isActive = true
@@ -243,6 +262,7 @@ class HLSettingViewController: UIViewController {
     }
     
     private func addConstraintForMinSlider(){
+        minSlider.setValue(Float(changePercentageToInt(percentage: existingMinLevel!)), animated: true)
         minSlider.heightAnchor.constraint(equalToConstant: 55).isActive = true
         minSlider.leftAnchor.constraint(equalTo: self.minHLView.leftAnchor, constant: 8).isActive = true
         minSlider.rightAnchor.constraint(equalTo: self.minHLView.rightAnchor, constant: -8).isActive = true
@@ -267,26 +287,42 @@ class HLSettingViewController: UIViewController {
     }
     
     @objc func setCustomeHumidityLevel(_ sender: Any){
-        let firebase = customTabBarController?.humidiferFirebase
         
         let maxHL = Int(self.maxSlider.value)
         let minHL = Int(self.minSlider.value)
         
-        if maxHL > minHL{
-            firebase?.setHumidityHigherLevel(highLevel: "\(maxHL)%")
-            firebase?.setHumidityLowerLevel(lowLevel: "\(minHL)%")
+        if maxHL == changePercentageToInt(percentage: existingMaxLevel!) && minHL == changePercentageToInt(percentage: existingMinLevel!){
+            repeatMessage()
+        }
+        else if maxHL <= minHL{
+            invalidSettingMessage()
         }else{
-
+            customTabBarController?.humidiferFirebase.setHumidityHigherLevel(highLevel: "\(maxHL)%")
+            customTabBarController?.humidiferFirebase.setHumidityLowerLevel(lowLevel: "\(minHL)%")
+            successMessage()
         }
     }
     
+    private func repeatMessage(){
+        let message = AlertMessage.displayErrorMessage(title: "", message: "Humidity levels did not change.")
+        self.present(message,animated: true,completion: nil)
+    }
+    
     private func successMessage(){
-        let message = AlertMessage.displayErrorMessage(title: "Congrats", message: "Setting done.")
+        let message = AlertMessage.displayErrorMessage(title: "", message: "Humidity levels are set.")
         self.present(message,animated: true,completion: nil)
     }
     
     private func invalidSettingMessage(){
-        let message = AlertMessage.displayErrorMessage(title: "Error", message: "Maximum level shouldn't be lower than minimum level.")
+        let message = AlertMessage.displayErrorMessage(title: "", message: "Maximum level shouldn't be lower than minimum level.")
         self.present(message,animated: true,completion: nil)
+    }
+    
+    //helper function: change the percentage to an Int
+    private func changePercentageToInt(percentage:String) -> Int {
+        var newpercentage = percentage
+        newpercentage.remove(at: percentage.firstIndex(of: "%")!)
+        let newFloat = Float(newpercentage)
+        return Int(newFloat!)
     }
 }
