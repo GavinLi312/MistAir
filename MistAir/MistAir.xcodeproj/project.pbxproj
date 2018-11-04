@@ -18,7 +18,6 @@
 		A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAE5216DE762009DCADB /* AppDelegate.swift */; };
 		A328DAEE216DE762009DCADB /* MistAir.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */; };
 		A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A328DAEF216DE765009DCADB /* Assets.xcassets */; };
-		A328DAF3216DE765009DCADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */; };
 		A328DAFE216DE765009DCADB /* MistAirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAFD216DE765009DCADB /* MistAirTests.swift */; };
 		A328DB09216DE765009DCADB /* MistAirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DB08216DE765009DCADB /* MistAirUITests.swift */; };
 		A35C3F3F2171A14F001F1676 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */; };
@@ -61,7 +60,6 @@
 		A328DAE5216DE762009DCADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A328DAED216DE762009DCADB /* MistAir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MistAir.xcdatamodel; sourceTree = "<group>"; };
 		A328DAEF216DE765009DCADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A328DAF2216DE765009DCADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A328DAF4216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A328DAF9216DE765009DCADB /* MistAirTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MistAirTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A328DAFD216DE765009DCADB /* MistAirTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistAirTests.swift; sourceTree = "<group>"; };
@@ -69,7 +67,7 @@
 		A328DB04216DE765009DCADB /* MistAirUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MistAirUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A328DB08216DE765009DCADB /* MistAirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistAirUITests.swift; sourceTree = "<group>"; };
 		A328DB0A216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MistAir/Firebase/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A3C2A32B2174250C0094CDA3 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidifierFireBase.swift; sourceTree = "<group>"; };
 		A3ECEC44218C642D0031EC7A /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
@@ -155,21 +153,15 @@
 		A328DAE4216DE762009DCADB /* MistAir */ = {
 			isa = PBXGroup;
 			children = (
-				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
-				A328DAEF216DE765009DCADB /* Assets.xcassets */,
-				3203B158216DE89B00E00955 /* BaseTabBarController.swift */,
-				A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */,
-				A300C91621761CAE0084D7BE /* TimerController.swift */,
-				A300C918217712010084D7BE /* CircleSlider.swift */,
-				A3C2A32B2174250C0094CDA3 /* HomePageController.swift */,
-				3203B15A216DE89B00E00955 /* Colour.swift */,
-				3203B159216DE89B00E00955 /* CustomColour.swift */,
-				A300C91A21785D180084D7BE /* TimeFormatter.swift */,
-				A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */,
 				A328DAF4216DE765009DCADB /* Info.plist */,
-				A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */,
-				A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */,
-				A3ECEC44218C642D0031EC7A /* AlertMessage.swift */,
+				A3ECEC4D218E9CA50031EC7A /* Firebase */,
+				A3ECEC4C218E9C680031EC7A /* Support Files */,
+				A3ECEC4B218E9C4E0031EC7A /* Alert Message */,
+				A3ECEC4A218E9C400031EC7A /* Date Extension */,
+				A3ECEC49218E9C190031EC7A /* Colour Extension */,
+				A3ECEC48218E9BCD0031EC7A /* Second Tab - Timer */,
+				A3ECEC47218E9BBE0031EC7A /* Firt Tab - Home */,
+				A3ECEC46218E9B7B0031EC7A /* Base Tab Bar */,
 			);
 			path = MistAir;
 			sourceTree = "<group>";
@@ -190,6 +182,75 @@
 				A328DB0A216DE765009DCADB /* Info.plist */,
 			);
 			path = MistAirUITests;
+			sourceTree = "<group>";
+		};
+		A3ECEC46218E9B7B0031EC7A /* Base Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				3203B158216DE89B00E00955 /* BaseTabBarController.swift */,
+			);
+			path = "Base Tab Bar";
+			sourceTree = "<group>";
+		};
+		A3ECEC47218E9BBE0031EC7A /* Firt Tab - Home */ = {
+			isa = PBXGroup;
+			children = (
+				A3C2A32B2174250C0094CDA3 /* HomePageController.swift */,
+			);
+			path = "Firt Tab - Home";
+			sourceTree = "<group>";
+		};
+		A3ECEC48218E9BCD0031EC7A /* Second Tab - Timer */ = {
+			isa = PBXGroup;
+			children = (
+				A300C91621761CAE0084D7BE /* TimerController.swift */,
+				A300C918217712010084D7BE /* CircleSlider.swift */,
+			);
+			path = "Second Tab - Timer";
+			sourceTree = "<group>";
+		};
+		A3ECEC49218E9C190031EC7A /* Colour Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3203B15A216DE89B00E00955 /* Colour.swift */,
+				3203B159216DE89B00E00955 /* CustomColour.swift */,
+			);
+			path = "Colour Extension";
+			sourceTree = "<group>";
+		};
+		A3ECEC4A218E9C400031EC7A /* Date Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A300C91A21785D180084D7BE /* TimeFormatter.swift */,
+			);
+			path = "Date Extension";
+			sourceTree = "<group>";
+		};
+		A3ECEC4B218E9C4E0031EC7A /* Alert Message */ = {
+			isa = PBXGroup;
+			children = (
+				A3ECEC44218C642D0031EC7A /* AlertMessage.swift */,
+			);
+			path = "Alert Message";
+			sourceTree = "<group>";
+		};
+		A3ECEC4C218E9C680031EC7A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A328DAE5216DE762009DCADB /* AppDelegate.swift */,
+				A328DAEF216DE765009DCADB /* Assets.xcassets */,
+				A328DAEC216DE762009DCADB /* MistAir.xcdatamodeld */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		A3ECEC4D218E9CA50031EC7A /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */,
+				A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +366,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A328DAF3216DE765009DCADB /* LaunchScreen.storyboard in Resources */,
 				A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */,
 				A35C3F3F2171A14F001F1676 /* GoogleService-Info.plist in Resources */,
 			);
@@ -465,17 +525,6 @@
 			targetProxy = A328DB05216DE765009DCADB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		A328DAF1216DE765009DCADB /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A328DAF2216DE765009DCADB /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A328DB0B216DE765009DCADB /* Debug */ = {

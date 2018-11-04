@@ -98,10 +98,14 @@ class TimerController: UIViewController,ReadTimeDelegate {
         initializeStartTimeLabel()
         initializeEndTimeLabel()
         initializeButton()
-        self.customedTabBarController = self.tabBarController as! BaseTabBarController
-        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)
-        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)
-        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
+        self.customedTabBarController = self.tabBarController as? BaseTabBarController
+//        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)
+//        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)
+//        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
+        self.startAndEndTime = self.getStartTimeAndEndTime(startTime: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)!, duration: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)!)
+        
+        print(self.currentCircleSlider.getAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: NSDate(), date2:self.startAndEndTime[0])))
+        print(self.currentCircleSlider.getAngleFromMinute(minute: NSDate.caulculateTimeDifference(date1: self.startAndEndTime[0], date2: self.startAndEndTime[1])))
         
     }
     
@@ -229,8 +233,9 @@ class TimerController: UIViewController,ReadTimeDelegate {
         customedTabBarController?.humidiferFirebase.setTimer(newTimer: newTimer)
     }
     
-    func getEndTime(){
-        
+    func getStartTimeAndEndTime(startTime:NSDate,duration:TimeInterval) -> [NSDate]{
+        var endDate = startTime.addingTimeInterval(duration)
+        return [startTime,endDate]
     }
     
     
