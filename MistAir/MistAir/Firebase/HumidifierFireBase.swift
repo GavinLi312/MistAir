@@ -29,6 +29,7 @@ let group = DispatchGroup()
 class HumidifierFirebase {
     
     var myHumidifierStatus = humidifierStatus()
+    
     var oldHumidifierStarus : humidifierStatus?
     
     var humidifierKey = "-LQHaJMvoyvWyBicOSjr"
@@ -38,6 +39,8 @@ class HumidifierFirebase {
     var humidifierRef: DatabaseReference?
     
     var homePageProtocol : HomePageFirebase?
+    
+    var timerPageProtocol : TimerControllerFirebase?
     
     init() {
         databaseRef = Database.database().reference()
@@ -82,6 +85,17 @@ class HumidifierFirebase {
                     }
                 }
             }
+            var endtime = self.myHumidifierStatus.timer.startTime.addingTimeInterval(self.myHumidifierStatus.timer.duration)
+            
+            if endtime.compare(NSDate() as Date) == ComparisonResult.orderedAscending{
+                var newTimer = TimerFirebase()
+                newTimer.startTime = NSDate().addingTimeInterval(60)
+                
+                newTimer.duration = 1800
+                newTimer.timerStatus = false
+                self.setTimer(newTimer: newTimer)
+            }
+            
             if self.oldHumidifierStarus != nil{
                 if self.homePageProtocol != nil{
                     if self.myHumidifierStatus.currentHumidity != self.oldHumidifierStarus!.currentHumidity{
@@ -91,6 +105,20 @@ class HumidifierFirebase {
                         self.homePageProtocol?.waterSourceChange(waterStatus:self.myHumidifierStatus.waterSufficient)
                     }
                 }
+                
+                if self.timerPageProtocol != nil{
+                    if self.myHumidifierStatus.timer.timerStatus != self.oldHumidifierStarus?.timer.timerStatus{
+                        if self.myHumidifierStatus.timer.timerStatus == false{
+                            self.timerPageProtocol?.timerStatusCanceled()
+                        }
+                    }
+                    
+                    if self.myHumidifierStatus.waterSufficient != self.oldHumidifierStarus!.waterSufficient{
+                        self.timerPageProtocol?.waterSourceChange(waterStatus:self.myHumidifierStatus.waterSufficient)
+                    }
+
+                }
+                
                 
             }else{
                 
@@ -123,7 +151,7 @@ class HumidifierFirebase {
     }
     
     func setTimer(newTimer:TimerFirebase) {
-        
+
         let data = [
             "start Time": newTimer.startTime.timeIntervalSince1970,
             "duration": newTimer.duration,
@@ -131,6 +159,10 @@ class HumidifierFirebase {
             ] as [String : Any]
         
         humidifierRef?.child(self.humidifierKey).child("timer").setValue(data)
+    }
+    
+    func cancelTimer(){
+        humidifierRef?.child(self.humidifierKey).child("timer").child("status").setValue(false)
     }
     
 }

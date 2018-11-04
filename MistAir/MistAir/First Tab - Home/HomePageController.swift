@@ -14,16 +14,15 @@ protocol HomePageFirebase {
     func waterSourceChange(waterStatus:Bool)
 }
 
+enum HumidifierSwitchStatus : Int{
+    case on
+    case off
+    case noWater
+}
 
 
 class HomePageController: UIViewController,HomePageFirebase {
 
-    enum HumidifierSwitchStatus : Int{
-        case on
-        case off
-        case noWater
-    }
-    
     var customedTabBarController : BaseTabBarController?
     
     let shapeLayer = CAShapeLayer()
@@ -339,7 +338,7 @@ class HomePageController: UIViewController,HomePageFirebase {
         shapeLayer.add(basicAnimation, forKey: "Humidity")
     }
 
-    @objc func switchButtonWasPressed(_ sender: UIButton) {
+    @objc func switchButtonWasPressed(_ sender: Any) {
         if self.buttonStatus == .noWater{
             noWaterWarning()
         }else{
@@ -347,6 +346,16 @@ class HomePageController: UIViewController,HomePageFirebase {
                 self.buttonStatus = .off
                 self.customedTabBarController?.humidiferFirebase.setStatus(status: false)
             }else if buttonStatus == .off{
+                if (customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)!{
+//                    if customedTabBarController?.viewControllers![1].childViewControllers[0] != nil{
+//                        let timerController = customedTabBarController?.viewControllers![1].childViewControllers[0] as! TimerController
+//                            timerController.setButtonIsClicked(self)
+//
+//                    }else{
+//                        print("")
+//                    }
+                    self.customedTabBarController?.humidiferFirebase.cancelTimer()
+                }
                 self.buttonStatus = .on
                 self.customedTabBarController?.humidiferFirebase.setStatus(status: true)
                 self.customedTabBarController?.humidiferFirebase.setTurnOnTime(time:NSDate())
