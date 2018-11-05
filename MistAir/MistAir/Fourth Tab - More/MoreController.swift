@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import UserNotifications
 
 
-let sectionArray = ["HUMIDITY LEVEL", "PRESENCE DETECTION", "SETTING"]
+class MoreController: UITableViewController, UNUserNotificationCenterDelegate {
 
-class MoreController: UITableViewController {
-
+    //tab bar
+    var customTabBar : BaseTabBarController?
     
+    //notification center
+    var notificationCenter: UNUserNotificationCenter!
+    
+    //to store user options on HL auto mode, PD auto mode and notification
+    var HLAutoMode = false
+    var PDAutoMode = false
+    var notification = false
+    
+    let sectionArray = ["HUMIDITY LEVEL", "PRESENCE DETECTION", "SETTING"]
     
     //for mode array -- first row for each section
     let modeArray = [Mode(imageName: "HL mode-40", labelText: "HL Auto Mode"),
@@ -34,11 +44,48 @@ class MoreController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //tab bar
+        customTabBar = self.tabBarController as? BaseTabBarController
+        
+        notificationCenter = UNUserNotificationCenter.current()
+        
+        //delegate
+        notificationCenter.delegate = self
+        
+        //background colour
         tableView.backgroundColor = UIColor.darkPurple
+        
+        //register the cell classes
         tableView.register(MoreTableViewCell.self, forCellReuseIdentifier: "ModeCell")
         tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingCell")
         tableView.register(ExplanationTableViewCell.self, forCellReuseIdentifier: "ExplanationCell")
         tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: "HeaderCell")
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //retrieve user options from firebase
+        HLAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.HLMode
+        PDAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.PDMode
+        
+        //get user notification settings
+        isNotificationOn()
+    }
+    
+    //check user notification setting
+    private func isNotificationOn(){
+        notificationCenter.getNotificationSettings { (settings) in
+            if settings.authorizationStatus  == .authorized{
+                    self.notification = true
+                }
+            else{
+                self.notification = false
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -97,16 +144,22 @@ class MoreController: UITableViewController {
             modeCell.selectionStyle = .none
             modeCell.labelView.text = modeArray[indexPath.section].labelText
             modeCell.iconView.image = UIImage(named: modeArray[indexPath.section].imageName!)
-            switch indexPath.section{
+            modeCell.modeSwitch.tag = indexPath.section
+            
+            switch (indexPath.section){
             case 0:
-                modeCell.forUse = sectionArray[0]
+                modeCell.modeSwitch.setOn(HLAutoMode, animated: false)
+                modeCell.modeSwitch.addTarget(self, action: #selector(self.HLModeSwitchTouched(_:)), for: UIControlEvents.valueChanged)
             case 1:
-                modeCell.forUse = sectionArray[1]
+                modeCell.modeSwitch.setOn(PDAutoMode, animated: false)
+                modeCell.modeSwitch.addTarget(self, action: #selector(self.PDModeSwitchTouched(_:)), for: UIControlEvents.valueChanged)
             case 2:
-                modeCell.forUse = sectionArray[2]
+                modeCell.modeSwitch.setOn(notification, animated: false)
+                modeCell.modeSwitch.addTarget(self, action: #selector(self.NotificationTouched(_:)), for: UIControlEvents.valueChanged)
             default:
-                print("should be all right")
+                print("")
             }
+
             return modeCell
         }
         
@@ -150,6 +203,27 @@ class MoreController: UITableViewController {
         tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor.darkPurple
     }
     
+    //change the status of switch when touched
+    @objc func HLModeSwitchTouched(_ sender: UISwitch){
+        if sender.tag == 0{
+            customTabBar?.humidiferFirebase.setHLMode(status: sender.isOn)
+        }
+    }
     
-
+    //change the status of switch when touched
+    @objc func PDModeSwitchTouched(_ sender: UISwitch){
+        if sender.tag == 1{
+            customTabBar?.humidiferFirebase.setPDMode(status: sender.isOn)
+        }
+    }
+    
+    //learned how to navigate to device settings: https://stackoverflow.com/questions/35889412/check-user-settings-for-push-notification-in-swift
+    @objc func NotificationTouched(_ sender: UISwitch){
+        if sender.tag == 2{
+            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: {enabled in
+                self.notification = enabled
+            })
+        }
+    }
+        
 }
