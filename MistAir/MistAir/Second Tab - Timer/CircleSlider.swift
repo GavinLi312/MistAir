@@ -208,7 +208,6 @@ class CircleSlider: UIView {
         myClockImageView!.layer.borderWidth = 2
         myClockImageView.center = self.circle_center
         self.addSubview(myClockImageView)
-//        self.bringSubview(toFront: myClockImageView)
         return myClockImageView
     }
     func pointOnCircle(forRad rad: CGFloat, withRadius radius: CGFloat) -> CGPoint {
@@ -327,7 +326,6 @@ class CircleSlider: UIView {
         var percentage = CGFloat(minute)/CGFloat(self.time)
         angle = percentage * 2 * CGFloat.pi
         self.start_rad = angle
-//        self.start_point = pointOnCircle(forRad: self.start_rad!, withRadius: circle_diameter / 2)
         return start_rad!
     }
     
@@ -335,8 +333,6 @@ class CircleSlider: UIView {
         var angle : CGFloat!
         let percentage = CGFloat(minute)/CGFloat(self.time)
         angle = percentage * 2 * CGFloat.pi + self.start_rad!
-//        self = ((self.start_rad! + angle) > CGFloat.pi * 2 ) ? ((self.start_rad! + angle) - CGFloat.pi * 2) : (self.start_rad! + angle)
-//        self.end_point = pointOnCircle(forRad: self.end_rad!, withRadius: circle_diameter / 2)
         return angle!
     }
     

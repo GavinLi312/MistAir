@@ -166,7 +166,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
     ///backGroundPageview
     func initializeBackGroundView(){
         var backgroundView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        //        backgroundView.image = UIImage(named: "Triangle-Kids-Books" )
         self.view.backgroundColor = UIColor.darkPurple
         self.view.addSubview(backgroundView)
     }
@@ -209,7 +208,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         startTime.translatesAutoresizingMaskIntoConstraints = false
         startLabel.translatesAutoresizingMaskIntoConstraints = false
         DispatchQueue.main.async{
-//            self.startTime.text = "\((self.currentCircleSlider.start_point)!)"
        
             self.startTime.widthAnchor.constraint(equalToConstant: 150).isActive = true
             self.startTime.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -236,7 +234,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         endTime.translatesAutoresizingMaskIntoConstraints = false
         endLabel.translatesAutoresizingMaskIntoConstraints = false
         DispatchQueue.main.async{
-//            self.endTime.text = "\((self.currentCircleSlider.end_point)!)"
             
             self.endTime.widthAnchor.constraint(equalToConstant: 150).isActive = true
             self.endTime.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -280,7 +277,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
     func initializeTimeStatus(){
         view.addSubview(self.timerStatusLabel)
         timerStatusLabel.translatesAutoresizingMaskIntoConstraints = false
-//        self.timerStatusLabel.frame = CGRect(x: self.currentCircleSlider.circle_center.x, y: self.currentCircleSlider.circle_center.y, width: 60, height: 60)
         self.timerStatusLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         self.timerStatusLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.timerStatusLabel.bottomAnchor.constraint(equalTo: self.timeLabel.topAnchor, constant: 0).isActive = true
@@ -385,7 +381,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
                 print("should not happen")
             }
         }else{
-            //self.timeLabel =
             self.timerStatusLabel.text = "Start"
             self.timeLabel.text = NSDate.stringFromTimeIntervalAsHourAndMinutes(interval: self.startAndEndTime[0].timeIntervalSinceNow)
         }

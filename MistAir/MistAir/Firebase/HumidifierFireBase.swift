@@ -141,7 +141,11 @@ class HumidifierFirebase {
                     }
                 }
                 
-                
+                if self.myHumidifierStatus.roomVacancy != self.oldHumidifierStarus?.roomVacancy{
+                    if self.myHumidifierStatus.roomVacancy == true{
+                        AlertMessage.pushNotification(title: "Room Empty", body: "There is nobody at home")
+                    }
+                }
             }else{
                 
             }
