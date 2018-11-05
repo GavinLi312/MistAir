@@ -64,6 +64,13 @@ extension NSDate{
         return string
     }
     
+    static func convertNSdateToSelectedDateString(date:NSDate) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E dd MMM"
+        let string = dateFormatter.string(from:date as Date )
+        return string
+    }
+    
     static func convertNSdateToStringWeekday(date:NSDate) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"

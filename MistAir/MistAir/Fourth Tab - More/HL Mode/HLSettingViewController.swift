@@ -297,9 +297,13 @@ class HLSettingViewController: UIViewController {
         else if maxHL <= minHL{
             invalidSettingMessage()
         }else{
-            customTabBarController?.humidiferFirebase.setHumidityHigherLevel(highLevel: "\(maxHL)%")
-            customTabBarController?.humidiferFirebase.setHumidityLowerLevel(lowLevel: "\(minHL)%")
-            successMessage()
+           DispatchQueue.main.async{
+            self.customTabBarController?.humidiferFirebase.setHumidityHigherLevel(highLevel: "\(maxHL)%")
+            self.customTabBarController?.humidiferFirebase.setHumidityLowerLevel(lowLevel: "\(minHL)%")
+            
+            }
+            //successMessage()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
