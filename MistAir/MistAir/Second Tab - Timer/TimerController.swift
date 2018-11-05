@@ -79,7 +79,7 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.setImage(UIImage(named: "timer-20"), for: .normal)
+        button.setImage(UIImage(named: "clock-with-white-face-2-20"), for: .normal)
         button.backgroundColor = UIColor.buttonPurple
         button.layer.cornerRadius = 5
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
