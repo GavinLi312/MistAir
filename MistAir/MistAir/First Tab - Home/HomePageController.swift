@@ -43,8 +43,6 @@ class HomePageController: UIViewController,HomePageFirebase {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 70)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
         return label
     }()
     
@@ -54,8 +52,6 @@ class HomePageController: UIViewController,HomePageFirebase {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
         return label
         
     }()
@@ -66,8 +62,6 @@ class HomePageController: UIViewController,HomePageFirebase {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
         return label
     }()
     
@@ -77,8 +71,6 @@ class HomePageController: UIViewController,HomePageFirebase {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textColor = UIColor.white
-//                label.layer.borderColor = UIColor.black.cgColor
-//                label.layer.borderWidth = 2
         return label
     }()
     
@@ -88,8 +80,6 @@ class HomePageController: UIViewController,HomePageFirebase {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
         return label
     }()
     
@@ -101,9 +91,6 @@ class HomePageController: UIViewController,HomePageFirebase {
         button.setTitleColor(UIColor.white,for:.normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-//        let image = UIImage(named: "power-button-2-20")?.cgImage
-//
-//        button.setImage(image, for: .normal)
         button.backgroundColor = UIColor.buttonPurple
         button.layer.cornerRadius = 5
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -184,7 +171,6 @@ class HomePageController: UIViewController,HomePageFirebase {
     ///backGroundPageview
     func initializeBackGroundView(){
         var backgroundView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-//        backgroundView.image = UIImage(named: "Triangle-Kids-Books" )
         self.view.backgroundColor = UIColor.darkPurple
         self.view.addSubview(backgroundView)
     }

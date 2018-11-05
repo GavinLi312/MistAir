@@ -35,6 +35,7 @@
 		A328DAFE216DE765009DCADB /* MistAirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DAFD216DE765009DCADB /* MistAirTests.swift */; };
 		A328DB09216DE765009DCADB /* MistAirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328DB08216DE765009DCADB /* MistAirUITests.swift */; };
 		A336313A21904BA4001B87C7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A336313921904BA4001B87C7 /* AboutViewController.swift */; };
+		A336313C21905E4F001B87C7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A336313B21905E4F001B87C7 /* Launch Screen.storyboard */; };
 		A35C3F3F2171A14F001F1676 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */; };
 		A3C2A32C2174250C0094CDA3 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A32B2174250C0094CDA3 /* HomePageController.swift */; };
 		A3ECEC43218C336B0031EC7A /* HumidifierFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */; };
@@ -97,6 +98,7 @@
 		A328DB08216DE765009DCADB /* MistAirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistAirUITests.swift; sourceTree = "<group>"; };
 		A328DB0A216DE765009DCADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A336313921904BA4001B87C7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A336313B21905E4F001B87C7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A35C3F3E2171A14F001F1676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MistAir/Firebase/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A3C2A32B2174250C0094CDA3 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		A3ECEC42218C336B0031EC7A /* HumidifierFireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidifierFireBase.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		A328DAE4216DE762009DCADB /* MistAir */ = {
 			isa = PBXGroup;
 			children = (
+				A336313B21905E4F001B87C7 /* Launch Screen.storyboard */,
 				32DE66AA218FD07400BEA99B /* Third Tab - Charts */,
 				32DE669D218E9F2200BEA99B /* Authentication */,
 				32DE669C218E9F0D00BEA99B /* Fourth Tab - More */,
@@ -451,6 +454,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A336313C21905E4F001B87C7 /* Launch Screen.storyboard in Resources */,
 				A328DAF0216DE765009DCADB /* Assets.xcassets in Resources */,
 				A35C3F3F2171A14F001F1676 /* GoogleService-Info.plist in Resources */,
 			);

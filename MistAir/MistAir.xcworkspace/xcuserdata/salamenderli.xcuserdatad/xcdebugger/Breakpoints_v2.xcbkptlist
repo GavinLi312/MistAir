@@ -340,7 +340,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAirTests/MistAirTests.swift"
-            timestampString = "563108126.063199"
+            timestampString = "563110343.6228189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -372,12 +372,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.063488"
+            timestampString = "563111257.651154"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "initializeCircleView()"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "initializeStartTimeLabel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -388,28 +388,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.063711"
+            timestampString = "563111257.6513849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "initializeCircleView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.0637749"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "initializeCircleView()"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "initializeEndTimeLabel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -420,12 +404,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.063836"
+            timestampString = "563111257.651444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "setButtonIsClicked(_:)"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "timerStatusCanceled()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -436,12 +420,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.063894"
+            timestampString = "563111257.651494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "setButtonIsClicked(_:)"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "waterSourceChange(waterStatus:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -452,12 +436,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.063951"
+            timestampString = "563111257.651541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
-            landmarkName = "setButtonIsClicked(_:)"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
+            landmarkName = "waterSourceChange(waterStatus:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -468,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/First Tab - Home/HomePageController.swift"
-            timestampString = "563108126.064011"
+            timestampString = "563111257.65159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "switchButtonWasPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -484,7 +468,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.835668"
+            timestampString = "563111257.651787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -500,7 +484,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.836223"
+            timestampString = "563111257.651944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -516,7 +500,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.8364789"
+            timestampString = "563111257.651992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -532,7 +516,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.83667"
+            timestampString = "563111257.652036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -548,12 +532,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064257"
+            timestampString = "563111257.652081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "initializeCircleView()"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "initializeStartTimeLabel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -564,7 +548,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064311"
+            timestampString = "563111257.652125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -580,13 +564,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064351"
+            timestampString = "563111257.6521699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
             endingLineNumber = "154"
-            landmarkName = "timerControllerTimerStatus"
-            landmarkType = "24">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -596,12 +580,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064391"
+            timestampString = "563111257.6522141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "setButtonIsClicked(_:)"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
+            landmarkName = "timerStatusCanceled()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -612,27 +596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.06443"
+            timestampString = "563111257.652259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
-            landmarkName = "setButtonIsClicked(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064469"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "waterSourceChange(waterStatus:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -644,13 +612,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064509"
+            timestampString = "563111257.6523041"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "389"
+            endingLineNumber = "389">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MistAir/Second Tab - Timer/TimerController.swift"
+            timestampString = "563111257.652347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
-            landmarkName = "timerControllerTimerStatus"
-            landmarkType = "24">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -660,27 +642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064548"
+            timestampString = "563111257.652392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
-            landmarkName = "setButtonIsClicked(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MistAir/Second Tab - Timer/TimerController.swift"
-            timestampString = "563108126.064586"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "waterSourceChange(waterStatus:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -691,13 +657,27 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "MistAir/Second Tab - Timer/TimerController.swift"
+            timestampString = "563111257.652436"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "389"
+            endingLineNumber = "389">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.836935"
+            timestampString = "563111257.6524791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "getData()"
+            landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -708,13 +688,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.837132"
+            timestampString = "563111257.652521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "init()"
-            landmarkType = "7">
+            landmarkName = "HumidifierFirebase"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -740,12 +720,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAir/Firebase/HumidifierFireBase.swift"
-            timestampString = "563104127.837353"
+            timestampString = "563111257.652597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "getData()"
+            landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -756,7 +736,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAirTests/MistAirTests.swift"
-            timestampString = "563108126.064698"
+            timestampString = "563110343.625107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -772,7 +752,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAirTests/MistAirTests.swift"
-            timestampString = "563108126.064748"
+            timestampString = "563110343.625195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -788,7 +768,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MistAirTests/MistAirTests.swift"
-            timestampString = "563108126.064788"
+            timestampString = "563110343.6252511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
