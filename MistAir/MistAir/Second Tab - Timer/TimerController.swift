@@ -220,9 +220,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         circleSlider.makeSlider()
         
         self.customedTabBarController?.humidiferFirebase.timerPageProtocol = self
-        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)
-        print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)
-                print(self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)
 
         self.startAndEndTime = self.getStartTimeAndEndTime(startTime: ((self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.startTime)!), duration: (self.customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.duration)!)
         

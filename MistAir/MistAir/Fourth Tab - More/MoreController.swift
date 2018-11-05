@@ -213,6 +213,8 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate, C
         //logout
         case (2,2):
             self.navigationController?.pushViewController(LogoutViewController(), animated: true)
+        case (2,1):
+            self.navigationController?.pushViewController(AboutViewController(), animated: true)
         default:
             print("")
         }
