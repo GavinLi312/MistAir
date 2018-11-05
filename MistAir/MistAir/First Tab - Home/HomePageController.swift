@@ -133,7 +133,6 @@ class HomePageController: UIViewController,HomePageFirebase {
                 }
             case .noWater:
                 self.humidifierStatusLabel.text = "No Water"
-                print("i have no water")
         }
     }
     }
@@ -347,13 +346,7 @@ class HomePageController: UIViewController,HomePageFirebase {
                 self.customedTabBarController?.humidiferFirebase.setStatus(status: false)
             }else if buttonStatus == .off{
                 if (customedTabBarController?.humidiferFirebase.myHumidifierStatus.timer.timerStatus)!{
-//                    if customedTabBarController?.viewControllers![1].childViewControllers[0] != nil{
-//                        let timerController = customedTabBarController?.viewControllers![1].childViewControllers[0] as! TimerController
-//                            timerController.setButtonIsClicked(self)
-//
-//                    }else{
-//                        print("")
-//                    }
+
                     self.customedTabBarController?.humidiferFirebase.cancelTimer()
                 }
                 self.buttonStatus = .on
@@ -361,7 +354,6 @@ class HomePageController: UIViewController,HomePageFirebase {
                 self.customedTabBarController?.humidiferFirebase.setTurnOnTime(time:NSDate())
             }
         }
-        print("yeah i am touched")
         
     }
     

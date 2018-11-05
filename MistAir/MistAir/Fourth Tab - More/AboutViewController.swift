@@ -25,14 +25,14 @@ class AboutViewController: UIViewController {
         label.text = "Gavin & Michelle  Version1.0"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.gray
+        label.textColor = UIColor.customGrey
         return label
         
     }()
     
     let introductionLabel : UILabel = {
         let label = UILabel()
-        label.text = "MistAir is a smart humidifier aiming to bring ease and comfirt to users who would enjoy more mist in the air with one tap with the phone."
+        label.text = "MistAir is a smart humidifier aiming to bring ease and comfort to users who would enjoy more mist in the air with one tap with the phone."
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -82,7 +82,6 @@ class AboutViewController: UIViewController {
     func initializeTitleLabel(){
         self.view.addSubview(self.titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        self.timerStatusLabel.frame = CGRect(x: self.currentCircleSlider.circle_center.x, y: self.currentCircleSlider.circle_center.y, width: 60, height: 60)
         self.titleLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         self.titleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         self.titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
@@ -102,7 +101,14 @@ class AboutViewController: UIViewController {
     func initializeIntroductionLabel(){
         self.view.addSubview(self.introductionLabel)
         self.introductionLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.introductionLabel.widthAnchor.constraint(equalTo:self.view!.widthAnchor , constant: -100).isActive = true
+
+        
+        if Device.IS_IPHONE_5 {
+        self.introductionLabel.widthAnchor.constraint(equalTo:self.view!.widthAnchor , constant: -32).isActive = true
+        }else{
+                self.introductionLabel.widthAnchor.constraint(equalTo:self.view!.widthAnchor, constant: -100).isActive = true
+        }
+        
         self.introductionLabel.topAnchor.constraint(equalTo: self.developerInfo.bottomAnchor, constant: 20).isActive = true
         self.introductionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }

@@ -21,6 +21,9 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
     //humidity history list
     var humidityList = [Humidity]()
     
+    //humidity list sorted by humidity descendingly
+    var sortedHumidityList = [Humidity]()
+    
 //    //UI programatically
     let titleLabel: UILabel = {
        let label = UILabel()
@@ -55,34 +58,100 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         return chart
     }()
     
-    //views to display selected values from chart
-    let maxView: UIView = {
-       let view = UIView()
-        view.backgroundColor = UIColor.clear
-        return view
-    }()
-    
+    //views for some info
+    //max view
     let maxLabel: UILabel = {
        let label = UILabel()
-        label.text = "Higher humidity"
+        label.text = "    Highest humidity"
         label.backgroundColor = UIColor.buttonPurple
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 21)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
     let maxText: UILabel = {
         let label = UILabel()
-        label.text = ""
-        label.font = UIFont.systemFont(ofSize: 21)
+        label.text = "no data available"
+        label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = UIColor.white
         label.backgroundColor = UIColor.clear
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
-
-
+    //min view
+    let minLabel: UILabel = {
+        let label = UILabel()
+        label.text = "    Lowest humidity"
+        label.backgroundColor = UIColor.buttonPurple
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
     
+    let minText: UILabel = {
+        let label = UILabel()
+        label.text = "no data available"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    //date view
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "    Selected date"
+        label.backgroundColor = UIColor.buttonPurple
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let dateText: UILabel = {
+        let label = UILabel()
+        label.text = "tap the line chart"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    //humidity view
+    let humidityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "    Humidity"
+        label.backgroundColor = UIColor.buttonPurple
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let humidityText: UILabel = {
+        let label = UILabel()
+        label.text = "tap the line chart"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,18 +166,23 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         
         //setup UI
         setupTitleLabel()
-        
+
         //setup line charts
         setupDailyLineChart()
         
         //labels
         setupMaxView()
+        setupMinView()
+        setupDateView()
+        setupHumidityView()
         
         //get data from firebase
         getHumidityData()
         createHumidityList()
         setDailyChartValue()
-        
+
+        //fill
+        fillMaxMinHumidity()
     }
     
     //add constraint to title label
@@ -129,37 +203,91 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         dailyLineChart.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         dailyLineChart.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
         dailyLineChart.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        if Device.IS_IPHONE_5{
+            dailyLineChart.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        }
     }
 
     //max view UI
     private func setupMaxView(){
-        self.view.addSubview(maxView)
-        self.maxView.addSubview(maxLabel)
-        self.maxView.addSubview(maxText)
-        
-        self.maxView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(maxLabel)
+        self.view.addSubview(maxText)
+
         self.maxLabel.translatesAutoresizingMaskIntoConstraints = false
         self.maxText.translatesAutoresizingMaskIntoConstraints = false
         
-        //max view
-        self.maxView.topAnchor.constraint(equalTo: self.dailyLineChart.bottomAnchor, constant: 16).isActive = true
-        self.maxView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
-        self.maxView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
-        self.maxView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
         //max label
-        self.maxLabel.topAnchor.constraint(equalTo: self.maxView.topAnchor, constant: 0).isActive = true
-        self.maxLabel.leftAnchor.constraint(equalTo: self.maxView.leftAnchor, constant: 0).isActive = true
-        self.maxLabel.widthAnchor.constraint(equalToConstant: self.maxView.frame.size.width/2).isActive = true
-        self.maxLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        self.maxLabel.topAnchor.constraint(equalTo: self.dailyLineChart.bottomAnchor, constant: 16).isActive = true
+        self.maxLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        self.maxLabel.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2).isActive = true
+        self.maxLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         //
-        self.maxText.topAnchor.constraint(equalTo: self.maxView.topAnchor, constant: 0).isActive = true
-        self.maxText.leftAnchor.constraint(equalTo: self.maxLabel.rightAnchor, constant: 8).isActive = true
-        self.maxText.rightAnchor.constraint(equalTo: self.maxView.rightAnchor, constant: 0).isActive = true
-        self.maxText.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        self.maxText.topAnchor.constraint(equalTo: self.dailyLineChart.bottomAnchor , constant: 16).isActive = true
+        self.maxText.leftAnchor.constraint(equalTo: self.maxLabel.rightAnchor, constant: 16).isActive = true
+        self.maxText.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        self.maxText.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
+    private func setupMinView(){
+        self.view.addSubview(minLabel)
+        self.view.addSubview(minText)
+        
+        self.minLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.minText.translatesAutoresizingMaskIntoConstraints = false
+        
+        //min label
+        self.minLabel.topAnchor.constraint(equalTo: self.maxLabel.bottomAnchor, constant: 8).isActive = true
+        self.minLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        self.minLabel.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2).isActive = true
+        self.minLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        //
+        self.minText.topAnchor.constraint(equalTo: self.maxLabel.bottomAnchor , constant: 8).isActive = true
+        self.minText.leftAnchor.constraint(equalTo: self.minLabel.rightAnchor, constant: 16).isActive = true
+        self.minText.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        self.minText.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
+    private func setupDateView(){
+        self.view.addSubview(dateLabel)
+        self.view.addSubview(dateText)
+        
+        self.dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.dateText.translatesAutoresizingMaskIntoConstraints = false
+        
+        //dateLabel
+        self.dateLabel.topAnchor.constraint(equalTo: self.minLabel.bottomAnchor, constant: 8).isActive = true
+        self.dateLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        self.dateLabel.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2).isActive = true
+        self.dateLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        //
+        self.dateText.topAnchor.constraint(equalTo: self.minLabel.bottomAnchor , constant: 8).isActive = true
+        self.dateText.leftAnchor.constraint(equalTo: self.dateLabel.rightAnchor, constant: 16).isActive = true
+        self.dateText.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        self.dateText.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
+    private func setupHumidityView(){
+        self.view.addSubview(humidityLabel)
+        self.view.addSubview(humidityText)
+        
+        self.humidityLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.humidityText.translatesAutoresizingMaskIntoConstraints = false
+        
+        //humidityLabel
+        self.humidityLabel.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor, constant: 8).isActive = true
+        self.humidityLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        self.humidityLabel.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2).isActive = true
+        self.humidityLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        //
+        self.humidityText.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor , constant: 8).isActive = true
+        self.humidityText.leftAnchor.constraint(equalTo: self.humidityLabel.rightAnchor, constant: 16).isActive = true
+        self.humidityText.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        self.humidityText.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
 
     //get data from firebase
     private func getHumidityData(){
@@ -176,6 +304,9 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         }
         //sort the list by time ascendingly
         self.humidityList = tempList.sorted(by: { $0.time! < $1.time!} )
+        
+        //sort the list by humidity descendingly
+        self.sortedHumidityList = tempList.sorted(by: {$0.avgHumidity! > $1.avgHumidity!} )
     }
     
     //how to customize line chart: https://medium.com/@felicity.johnson.mail/lets-make-some-charts-ios-charts-5b8e42c20bc9
@@ -235,8 +366,29 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         self.dailyLineChart.moveViewToX(0.0)
     }
     
+    //set max / min value
+    private func fillMaxMinHumidity(){
+        let max = self.sortedHumidityList[0].avgHumidity
+        let min = self.sortedHumidityList[self.sortedHumidityList.count-1].avgHumidity
+
+        let maxString = String(format:"%.2f", max!)
+        let minString = String(format:"%.2f", min!)
+        
+        self.maxText.text = "\(maxString)%"
+        self.minText.text = "\(minString)%"
+    }
+    
     //delegate function
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("\(entry)")
+
+        let time = self.humidityList[Int(entry.x)].time
+        let newTime = NSDate.convertNSdateToSelectedDateString(date: time! as NSDate)
+        
+        let humidity = self.humidityList[Int(entry.x)].avgHumidity
+        let humidityString = String(format: "%.2f", humidity!)
+        
+        self.dateText.text = newTime
+        self.humidityText.text = "\(humidityString)%"
+        
     }
 }

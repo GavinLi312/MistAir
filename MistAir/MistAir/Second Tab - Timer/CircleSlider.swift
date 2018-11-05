@@ -135,7 +135,6 @@ class CircleSlider: UIView {
         let touch = touches.first!.location(in: self)
         
         if checkPointInTheCircle(Point: touch, Center: self.start_point!, Radius: self.circle_width/2){
-            print("yes, i am touched")
             startTouch(atPoint: touch)
         }else if checkPointInTheCircle(Point: touch, Center: self.end_point!, Radius: self.circle_width/2){
             startTouch(atPoint: touch)
@@ -248,13 +247,11 @@ class CircleSlider: UIView {
         
         if checkPointInTheCircle(Point: touch, Center: self.start_point!, Radius: self.circle_width/2){
             moveTouch(toPoint: touch, whichpoint: "start")
-           // print("yes i am moving")
         } else  if checkPointInTheCircle(Point: touch, Center: self.end_point!, Radius: self.circle_width/2){
             moveTouch(toPoint: touch, whichpoint: "end")
             
         }else{
             touchFailed()
-           // print("faile")
         }
         
     }
