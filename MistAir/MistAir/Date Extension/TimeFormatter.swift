@@ -49,4 +49,25 @@ extension NSDate{
         let hours = (interval / 3600)
         return String(format: "%02d:%02d", hours, minutes)
     }
+    
+    static func convertStringToDate(stringTime: String) -> NSDate {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E MMM dd HH:mm:ss yyyy"
+        let date = dateFormatter.date(from: stringTime)
+        return date! as NSDate
+    }
+    
+    static func convertNSdateToStringDate(date:NSDate) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        let string = dateFormatter.string(from:date as Date )
+        return string
+    }
+    
+    static func convertNSdateToStringWeekday(date:NSDate) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        let string = dateFormatter.string(from:date as Date )
+        return string
+    }
 }

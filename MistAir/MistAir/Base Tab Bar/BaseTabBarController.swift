@@ -131,7 +131,7 @@ class BaseTabBarController: UITabBarController {
     func createStatisticsController() -> UINavigationController{
         
         //create a StatisticsController [it is an empty UIView for now]
-        let statisticsController = UIViewController()
+        let statisticsController = ChartsViewController()
         
         //assign the StatisticsController as the root controller
         let statisticsNavigationController = UINavigationController(rootViewController: statisticsController)
