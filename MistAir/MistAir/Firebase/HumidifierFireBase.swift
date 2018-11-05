@@ -56,8 +56,6 @@ class HumidifierFirebase {
         humidifierRef = databaseRef?.child("humidifier")
         if UserDefaults.standard.string(forKey: "Humidifier ID") != nil{
         humidifierKey = UserDefaults.standard.string(forKey: "Humidifier ID")!
-        //print(UserDefaults.standard.string(forKey: "Humidifier ID")!)
-        //print(humidifierKey)
         getData()
         }
     }
@@ -91,9 +89,6 @@ class HumidifierFirebase {
                     self.myHumidifierStatus.status = humidifierfirebase!["status"] as! Bool
                     self.myHumidifierStatus.waterSufficient = humidifierfirebase!["water Sufficient"] as! Bool
                     
-                    print(self.myHumidifierStatus.turnOnTime)
-                    print(NSDate.convertNSdateToString(date: self.myHumidifierStatus.turnOnTime))
-                    print(self.myHumidifierStatus)
                     if self.oldHumidifierStarus == nil{
                         group.leave()
                     }

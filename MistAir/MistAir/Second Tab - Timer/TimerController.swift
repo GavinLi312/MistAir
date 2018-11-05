@@ -29,9 +29,6 @@ protocol TimerControllerFirebase {
 
 class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase {
 
-
-//    let shapeLayer = CAShapeLayer()
-//    var pulsatingLayer: CAShapeLayer!
     var currentCircleSlider: CircleSlider!
     
     var startAndEndTime : [NSDate] = []
@@ -46,8 +43,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textColor = UIColor.white
-//                label.layer.borderColor = UIColor.black.cgColor
-//                label.layer.borderWidth = 2
         return label
     }()
     
@@ -57,9 +52,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
-
         return label
     }()
     
@@ -69,8 +61,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
         return label
     }()
     
@@ -80,9 +70,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
-
         return label
     }()
     
@@ -107,9 +94,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 50)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
-        
         return label
     }()
 
@@ -119,9 +103,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = UIColor.white
-//        label.layer.borderColor = UIColor.black.cgColor
-//        label.layer.borderWidth = 2
-        
         return label
     }()
     
@@ -131,7 +112,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
         didSet{
             switch timerControllerTimerStatus {
             case .on:
-                print(timerControllerTimerStatus)
                 self.setButton.setTitle(" CANCEL", for: .normal)
                 self.currentCircleSlider.isUserInteractionEnabled = false
                 self.startTiming()
@@ -139,14 +119,8 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
                 if timeLabel.text == "00:00"{
                     self.customedTabBarController?.humidiferFirebase.cancelTimer()
                 }
-                //self.currentCircleSlider.
-//                self.humidifierStatusLabel.text = "On"
-//                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .down)
-//                self.switchButton.setImage(buttonImage, for: .normal)
-//                self.switchButton.setTitle(" TURN OFF", for: .normal)
-//                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startTimer), userInfo: nil, repeats: true)
+
             case .off:
-                print(timerControllerTimerStatus)
                 self.setButton.setTitle(" SET", for: .normal)
                 self.currentCircleSlider.isUserInteractionEnabled = true
                 self.timerStatusLabel.text = "Closed"
@@ -155,22 +129,11 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
 
                     self.timeLabel.text = "00:00"
                 }
-//                self.humidifierStatusLabel.text = "Off"
-//                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .up)
-//                self.switchButton.setImage(buttonImage, for: .normal)
-//                self.switchButton.setTitle(" TURN ON", for: .normal)
-//                self.runningTimeLabel.text = "00:00:00"
-//                if self.timer.isValid == true{
-//                    self.timer.invalidate()
-//                }
+
             case .noWater:
-                print(timerControllerTimerStatus)
-//                self.timerStatusLabel.text = "N"
                 self.setButton.setTitle(" No Water", for: .normal)
                 
                 self.currentCircleSlider.isUserInteractionEnabled = false
-//                self.humidifierStatusLabel.text = "No Water"
-//                print("i have no water")
             }
         }
     }
@@ -327,7 +290,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
     func changeLabel(startMinute:Int,Duration:Int) {
         DispatchQueue.main.async{
             self.startAndEndTime = self.getTimeByMinute(minute: startMinute, duration: Duration)
-//            print(self.startAndEndTime)
             self.startTime.text = "\(NSDate.convertNSdateToString(date: self.startAndEndTime[0]))"
             self.endTime.text = "\((NSDate.convertNSdateToString(date: self.startAndEndTime[1])))"
         }
@@ -336,14 +298,11 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
     func getTimeByMinute(minute:Int,duration:Int) -> [NSDate] {
         let startDate = NSDate(timeIntervalSinceNow: TimeInterval(minute * 60))
         let endDate = startDate.addingTimeInterval(TimeInterval(duration*60))
-        print(NSDate.convertDateToFullString(date: startDate))
-        print(NSDate.convertDateToFullString(date: endDate))
         return [startDate,endDate]
     }
     
     
     @objc func setButtonIsClicked(_ sender: Any) {
-        print(self.timerControllerTimerStatus)
         if self.timerControllerTimerStatus == .noWater{
             self.noWaterWarning()
         }else{
@@ -383,7 +342,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
     }
     
     func waterSourceChange(waterStatus: Bool) {
-//        print("i am running")
         if waterStatus == true{
             self.timerControllerTimerStatus = .off
             self.setButton.setTitle("Ready", for: .normal)
@@ -392,7 +350,6 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
                 self.setButtonIsClicked(self)
             }
             self.timerControllerTimerStatus = .noWater
-            print(self.timerControllerTimerStatus)
             noWaterWarning()
         }
 

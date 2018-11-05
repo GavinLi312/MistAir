@@ -72,9 +72,9 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate, C
         
         //retrieve user options from firebase
         HLAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.HLMode
-        print(HLAutoMode)
+
         PDAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.PDMode
-        print(PDAutoMode)
+
         
         //get user notification settings
         isNotificationOn()
@@ -84,9 +84,9 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate, C
         super.viewWillDisappear(animated)
         //retrieve user options from firebase
         HLAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.HLMode
-        print(HLAutoMode)
+        
         PDAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.PDMode
-        print(PDAutoMode)
+        
         
         //get user notification settings
         isNotificationOn()
