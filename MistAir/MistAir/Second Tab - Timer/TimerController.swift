@@ -136,7 +136,9 @@ class TimerController: UIViewController,ReadTimeDelegate,TimerControllerFirebase
                 self.currentCircleSlider.isUserInteractionEnabled = false
                 self.startTiming()
                 self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.startTiming), userInfo: nil, repeats: true)
-                
+                if timeLabel.text == "00:00"{
+                    self.customedTabBarController?.humidiferFirebase.cancelTimer()
+                }
                 //self.currentCircleSlider.
 //                self.humidifierStatusLabel.text = "On"
 //                let buttonImage = UIImage(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: .down)

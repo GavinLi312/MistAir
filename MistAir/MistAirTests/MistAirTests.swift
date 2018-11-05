@@ -33,12 +33,12 @@ class MistAirTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    func testFIrebase(){
-        let firebase = HumidifierFirebase()
-//        firebase.getData()
-        waitForExpectations(timeout: 10, handler: nil)
-    }
-    
+//    func testFIrebase(){
+//        let firebase = HumidifierFirebase()
+////        firebase.getData()
+//        waitForExpectations(timeout: 10, handler: nil)
+//    }
+//
     func testDateDifference(){
         let date1 = NSDate()
         let date2 = NSDate(timeIntervalSinceNow: 2400)
@@ -46,4 +46,8 @@ class MistAirTests: XCTestCase {
         
     }
     
+    func testTimeZone(){
+        let now = NSDate()
+        print(now)
+    }
 }
