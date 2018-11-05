@@ -10,7 +10,8 @@ import UIKit
 import UserNotifications
 
 
-class MoreController: UITableViewController, UNUserNotificationCenterDelegate {
+
+class MoreController: UITableViewController, UNUserNotificationCenterDelegate, ChangeSwitchProtocol{
 
     //tab bar
     var customTabBar : BaseTabBarController?
@@ -48,6 +49,9 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate {
         //tab bar
         customTabBar = self.tabBarController as? BaseTabBarController
         
+        //delegate for switch on/off
+        customTabBar?.humidiferFirebase.changeSwitchProtocol = self
+        
         notificationCenter = UNUserNotificationCenter.current()
         
         //delegate
@@ -61,8 +65,6 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate {
         tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingCell")
         tableView.register(ExplanationTableViewCell.self, forCellReuseIdentifier: "ExplanationCell")
         tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: "HeaderCell")
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +72,21 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate {
         
         //retrieve user options from firebase
         HLAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.HLMode
+        print(HLAutoMode)
         PDAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.PDMode
+        print(PDAutoMode)
+        
+        //get user notification settings
+        isNotificationOn()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //retrieve user options from firebase
+        HLAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.HLMode
+        print(HLAutoMode)
+        PDAutoMode = customTabBar!.humidiferFirebase.myHumidifierStatus.PDMode
+        print(PDAutoMode)
         
         //get user notification settings
         isNotificationOn()
@@ -207,15 +223,34 @@ class MoreController: UITableViewController, UNUserNotificationCenterDelegate {
     @objc func HLModeSwitchTouched(_ sender: UISwitch){
         if sender.tag == 0{
             customTabBar?.humidiferFirebase.setHLMode(status: sender.isOn)
+            if sender.isOn == true && customTabBar?.humidiferFirebase.myHumidifierStatus.PDMode == true{
+                customTabBar?.humidiferFirebase.setPDMode(status: false)
+            }
         }
+    }
+    
+    //change switch protocol delegate method: switch HL off
+    func changeHLMode() {
+        let modeCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! MoreTableViewCell
+        modeCell.modeSwitch.setOn(false, animated: true)
     }
     
     //change the status of switch when touched
     @objc func PDModeSwitchTouched(_ sender: UISwitch){
         if sender.tag == 1{
             customTabBar?.humidiferFirebase.setPDMode(status: sender.isOn)
+            if sender.isOn == true && customTabBar?.humidiferFirebase.myHumidifierStatus.HLMode == true{
+                customTabBar?.humidiferFirebase.setHLMode(status: false)
+            }
         }
     }
+    
+    //change switch protocol delegate method: switch PD off
+    func changePDMode() {
+        let modeCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! MoreTableViewCell
+        modeCell.modeSwitch.setOn(false, animated: true)
+    }
+    
     
     //learned how to navigate to device settings: https://stackoverflow.com/questions/35889412/check-user-settings-for-push-notification-in-swift
     @objc func NotificationTouched(_ sender: UISwitch){

@@ -151,35 +151,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    //forgot password button
-    let forgotPasswordButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.clear
-        //button.setTitle("Forgot your password?", for: .normal)
-        button.setTitleColor(UIColor.customGrey, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.titleLabel?.textAlignment = .center
-        //button.setAttributedTitle(self.attributedString, for: .normal)
-        button.setAttributedTitle(NSAttributedString(string: "Forgot your password?", attributes: [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
-            NSAttributedStringKey.foregroundColor: UIColor.customGrey,
-            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
-            NSAttributedStringKey.underlineColor: UIColor.customGrey
-            ]), for: .normal)
-        return button
-        }()
-    
-    //for the underline button text
-    let attributedString: NSAttributedString = {
-        let attributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
-            NSAttributedStringKey.foregroundColor: UIColor.customGrey,
-            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
-            NSAttributedStringKey.underlineColor: UIColor.customGrey
-            ]
-        let attributedString = NSAttributedString(string: "Forgot your password?", attributes: attributes)
-        return attributedString
-    }()
+//    //forgot password button
+//    let forgotPasswordButton: UIButton = {
+//        let button = UIButton()
+//        button.backgroundColor = UIColor.clear
+//        //button.setTitle("Forgot your password?", for: .normal)
+//        button.setTitleColor(UIColor.customGrey, for: .normal)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+//        button.titleLabel?.textAlignment = .center
+//        //button.setAttributedTitle(self.attributedString, for: .normal)
+//        button.setAttributedTitle(NSAttributedString(string: "Forgot your password?", attributes: [
+//            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+//            NSAttributedStringKey.foregroundColor: UIColor.customGrey,
+//            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+//            NSAttributedStringKey.underlineColor: UIColor.customGrey
+//            ]), for: .normal)
+//        return button
+//        }()
+//
+//    //for the underline button text
+//    let attributedString: NSAttributedString = {
+//        let attributes: [NSAttributedStringKey: Any] = [
+//            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+//            NSAttributedStringKey.foregroundColor: UIColor.customGrey,
+//            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+//            NSAttributedStringKey.underlineColor: UIColor.customGrey
+//            ]
+//        let attributedString = NSAttributedString(string: "Forgot your password?", attributes: attributes)
+//        return attributedString
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,7 +200,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setupPasswordView()
         setupLoginButton()
         setupRegisterButton()
-        setupForgotPasswordButton()
+        //setupForgotPasswordButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -391,15 +391,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         registerButton.addTarget(self,action: #selector(registerAccount(_:)),for:.touchUpInside)
     }
     
-    //setup forgot password button
-    func setupForgotPasswordButton(){
-        self.view.addSubview(forgotPasswordButton)
-        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.topAnchor.constraint(equalTo: self.loginView.bottomAnchor, constant: 8).isActive = true
-        forgotPasswordButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
-        forgotPasswordButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
-        forgotPasswordButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-    }
+//    //setup forgot password button
+//    func setupForgotPasswordButton(){
+//        self.view.addSubview(forgotPasswordButton)
+//        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+//        forgotPasswordButton.topAnchor.constraint(equalTo: self.loginView.bottomAnchor, constant: 8).isActive = true
+//        forgotPasswordButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+//        forgotPasswordButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+//        forgotPasswordButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//    }
     
     
     //hide keyboard when press return button

@@ -9,6 +9,12 @@
 import Foundation
 import FirebaseDatabase
 
+protocol ChangeSwitchProtocol{
+    func changeHLMode()
+    func changePDMode()
+}
+
+
 struct humidifierStatus {
     var currentHumidity : String = ""
     
@@ -17,7 +23,7 @@ struct humidifierStatus {
     var humidityLowerLevel : String = ""
     var PDMode = false
     var turnOnTime: NSDate = NSDate()
-    var humidityHistory : [String:String] = [:]
+    var humidityHistory : [String:Double] = [:]
     var roomVacancy = false
     var status = false
     var timer = TimerFirebase()
@@ -43,13 +49,15 @@ class HumidifierFirebase {
     
     var timerPageProtocol : TimerControllerFirebase?
     
+    var changeSwitchProtocol: ChangeSwitchProtocol?
+    
     init() {
         databaseRef = Database.database().reference()
         humidifierRef = databaseRef?.child("humidifier")
         if UserDefaults.standard.string(forKey: "Humidifier ID") != nil{
         humidifierKey = UserDefaults.standard.string(forKey: "Humidifier ID")!
-        print(UserDefaults.standard.string(forKey: "Humidifier ID")!)
-        print(humidifierKey)
+        //print(UserDefaults.standard.string(forKey: "Humidifier ID")!)
+        //print(humidifierKey)
         getData()
         }
     }
@@ -72,7 +80,7 @@ class HumidifierFirebase {
                     self.myHumidifierStatus.humidityHigherLevel = humidifierfirebase!["Humidity Higher Level"] as! String
                     self.myHumidifierStatus.humidityLowerLevel = humidifierfirebase!["Humidity Lower Level"] as! String
                     self.myHumidifierStatus.PDMode = humidifierfirebase?["PDMode"] as! Bool
-                    //self.myHumidifierStatus.humidityHistory = humidifierfirebase!["humidity History"] as! [String:String]
+                    self.myHumidifierStatus.humidityHistory = humidifierfirebase!["humidity History"] as! [String:Double]
                     self.myHumidifierStatus.turnOnTime = NSDate(timeIntervalSince1970: (humidifierfirebase!["Turn on time"] as! Double))
                     var timerArray = humidifierfirebase!["timer"] as! [String:Any]
                     self.myHumidifierStatus.timer.startTime = NSDate(timeIntervalSince1970: (timerArray["start Time"] as! Double))
@@ -123,6 +131,19 @@ class HumidifierFirebase {
                         self.timerPageProtocol?.waterSourceChange(waterStatus:self.myHumidifierStatus.waterSufficient)
                     }
 
+                }
+                
+                if self.changeSwitchProtocol != nil{
+                    if self.myHumidifierStatus.PDMode != self.oldHumidifierStarus?.PDMode{
+                        if self.myHumidifierStatus.PDMode == true && self.oldHumidifierStarus!.HLMode == true{
+                            self.changeSwitchProtocol?.changeHLMode()
+                        }
+                    }
+                    if self.myHumidifierStatus.HLMode != self.oldHumidifierStarus?.HLMode{
+                        if self.myHumidifierStatus.HLMode == true && self.oldHumidifierStarus!.PDMode == true{
+                            self.changeSwitchProtocol?.changePDMode()
+                        }
+                    }
                 }
                 
                 

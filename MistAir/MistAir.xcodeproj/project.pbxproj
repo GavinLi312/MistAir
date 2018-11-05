@@ -22,6 +22,9 @@
 		32DE66A3218EE16000BEA99B /* HLSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE66A2218EE16000BEA99B /* HLSettingViewController.swift */; };
 		32DE66A7218EFF3B00BEA99B /* CustomUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE66A6218EFF3B00BEA99B /* CustomUISlider.swift */; };
 		32DE66A9218F100700BEA99B /* CustomUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE66A8218F100700BEA99B /* CustomUILabel.swift */; };
+		32DE66AC218FD08D00BEA99B /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE66AB218FD08D00BEA99B /* ChartsViewController.swift */; };
+		32DE66AE218FF24800BEA99B /* LineChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE66AD218FF24800BEA99B /* LineChartFormatter.swift */; };
+		32DE66B02190099300BEA99B /* Humidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DE66AF2190099300BEA99B /* Humidity.swift */; };
 		624A36C6AFB4D1702CEAB14A /* Pods_MistAirTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA92B556EE55A33CA1761F49 /* Pods_MistAirTests.framework */; };
 		A300C91721761CAE0084D7BE /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300C91621761CAE0084D7BE /* TimerController.swift */; };
 		A300C919217712010084D7BE /* CircleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300C918217712010084D7BE /* CircleSlider.swift */; };
@@ -72,6 +75,9 @@
 		32DE66A2218EE16000BEA99B /* HLSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSettingViewController.swift; sourceTree = "<group>"; };
 		32DE66A6218EFF3B00BEA99B /* CustomUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISlider.swift; sourceTree = "<group>"; };
 		32DE66A8218F100700BEA99B /* CustomUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUILabel.swift; sourceTree = "<group>"; };
+		32DE66AB218FD08D00BEA99B /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		32DE66AD218FF24800BEA99B /* LineChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartFormatter.swift; sourceTree = "<group>"; };
+		32DE66AF2190099300BEA99B /* Humidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Humidity.swift; sourceTree = "<group>"; };
 		39E0A8462956D1FFE36CE87C /* Pods-MistAir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAir.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAir/Pods-MistAir.debug.xcconfig"; sourceTree = "<group>"; };
 		77E11AC791C34630E739FFE3 /* Pods-MistAirUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirUITests/Pods-MistAirUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C5FFE71A6FF894A930E59A9 /* Pods-MistAirTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MistAirTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MistAirTests/Pods-MistAirTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +174,16 @@
 			path = "HL Mode";
 			sourceTree = "<group>";
 		};
+		32DE66AA218FD07400BEA99B /* Third Tab - Charts */ = {
+			isa = PBXGroup;
+			children = (
+				32DE66AB218FD08D00BEA99B /* ChartsViewController.swift */,
+				32DE66AD218FF24800BEA99B /* LineChartFormatter.swift */,
+				32DE66AF2190099300BEA99B /* Humidity.swift */,
+			);
+			path = "Third Tab - Charts";
+			sourceTree = "<group>";
+		};
 		6A10F34EA4D1C806D3ADD19D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +232,7 @@
 		A328DAE4216DE762009DCADB /* MistAir */ = {
 			isa = PBXGroup;
 			children = (
+				32DE66AA218FD07400BEA99B /* Third Tab - Charts */,
 				32DE669D218E9F2200BEA99B /* Authentication */,
 				32DE669C218E9F0D00BEA99B /* Fourth Tab - More */,
 				A328DAF4216DE765009DCADB /* Info.plist */,
@@ -561,7 +578,10 @@
 				3203B15C216DE89B00E00955 /* CustomColour.swift in Sources */,
 				A300C91721761CAE0084D7BE /* TimerController.swift in Sources */,
 				A328DAE6216DE762009DCADB /* AppDelegate.swift in Sources */,
+				32DE66B02190099300BEA99B /* Humidity.swift in Sources */,
 				32DE66A7218EFF3B00BEA99B /* CustomUISlider.swift in Sources */,
+				32DE66AC218FD08D00BEA99B /* ChartsViewController.swift in Sources */,
+				32DE66AE218FF24800BEA99B /* LineChartFormatter.swift in Sources */,
 				A3ECEC43218C336B0031EC7A /* HumidifierFireBase.swift in Sources */,
 				32DE669A218E9EE400BEA99B /* LoginViewController.swift in Sources */,
 				32DE66A0218EC8B600BEA99B /* LogoutViewController.swift in Sources */,
